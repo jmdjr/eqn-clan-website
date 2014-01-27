@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu>
+  <items>
+    <item text="Home" href="" />
+    <item text="About Us" href="~/Account/Login" />
+    <item text="Widgets" href="" >
+      <items>
+        <item text="test1" href="" />
+        <item text="test2" href="" />
+        <item text="test3" href="" />
+      </items>
+    </item>
+  </items>
+</menu>

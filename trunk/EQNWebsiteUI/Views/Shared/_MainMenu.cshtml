@@ -1,0 +1,21 @@
+﻿@using System.Xml.Serialization
+@using EQNWebsiteUI.Classes
+@using EQNWebsiteUI.Models
+@{
+    MenuModel menu = null;
+    
+    if(ViewData["Menu"] != null)
+    {
+        menu = (MenuModel)ViewData["Menu"];
+    }   
+}
+
+@if(menu != null)
+{
+    <ul>
+    @foreach(ItemModel item in menu.items)
+    {
+        @Html.Raw(Html.RenderMenuItems(item))
+    }
+    </ul>
+}
