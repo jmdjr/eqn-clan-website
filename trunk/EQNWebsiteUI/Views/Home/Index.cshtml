@@ -1,3 +1,20 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using EQNWebsiteUI.Models
+@{
+    WidgetModel[] Widgets = null;
+    if(ViewData["Widgets"] != null)
+    {
+        Widgets = (WidgetModel[])ViewData["Widgets"];
+    }
 }
+
+
+<div class="widget-area">
+    @if (Widgets != null)
+    {
+        foreach (WidgetModel widget in Widgets)
+        {
+            ViewData["Widget"] = widget;
+            Html.RenderPartial("Widgets/" + widget.widgetType, ViewData);
+        }
+    }
+</div>

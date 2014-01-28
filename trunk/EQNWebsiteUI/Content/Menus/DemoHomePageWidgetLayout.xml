@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<widgetCollection>
+  <widgets>
+    <widget positionX="0" positionY="0" columnX="0" columnY="0" type="RSSFeed" />
+    <widget positionX="0" positionY="0" columnX="0" columnY="0" type="TextRegion" />
+    <widget positionX="0" positionY="0" columnX="0" columnY="0" type="UserInfo" />
+    <widget positionX="0" positionY="0" columnX="0" columnY="0" type="Login" />
+  </widgets>
+</widgetCollection>

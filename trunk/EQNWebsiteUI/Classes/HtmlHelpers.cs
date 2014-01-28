@@ -24,20 +24,18 @@ namespace EQNWebsiteUI.Classes
                 menuItems += " class='menuitem-group'>";
                 foreach (ItemModel item in i.items)
                 {
-                    moreItems += "<ul>" + helper.RenderMenuItems(item) + "</ul>";
+                    moreItems += helper.RenderMenuItems(item);
                 }
             }
 
-            if (i.href != null && i.href != "")
+            menuItems += "<a href='" + (i.href ?? "") + "'>" + i.text + "</a>";
+
+            if (moreItems != "")
             {
-                menuItems += "<a href='" + i.href + "'>" + i.text + "</a>";
-            }
-            else
-            {
-                menuItems += i.text;
+                menuItems += "<ul>" + moreItems + "</ul>";
             }
 
-            menuItems += moreItems + "</li>";
+            menuItems += "</li>";
 
             return menuItems;
         }
