@@ -1,17 +1,19 @@
 ﻿@using EQNWebsiteUI.Models
 @{
-    WidgetModel widgetPartial = null;
+    WidgetModel widget = null;
     
     if(ViewData["Widget"] != null)
     {
-        widgetPartial = (WidgetModel)ViewData["Widget"];
+        widget = (WidgetModel)ViewData["Widget"];
     }
 }
 
-@if(widgetPartial != null)
+@if (widget != null)
 {
-<div class="jdWidget-wrapper">
+<li class="jdWidget-wrapper" data-col="@widget.positionX" data-row="@widget.positionY" data-sizex="@widget.columnX" data-sizey="@widget.columnY">
     <div class="jdWidget-titlebar-handle"></div>
-    @RenderBody()
-</div>
+    <div class="jdWidget-content">
+        @RenderBody()
+    </div>
+</li>
 }
