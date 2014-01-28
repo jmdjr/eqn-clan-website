@@ -1,51 +1,50 @@
-﻿*
-{
-    box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-    display:block;
-    position:relative;
+﻿* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    display: block;
+    position: relative;
     margin: 0px;
     padding: 0px;
 }
 
-html, body
-{
+style, script {
+    display: none;
+}
+
+html, body {
     width: 100%;
     margin: 0px;
     padding: 0px;
 }
 
-body, header, footer, .root-content
-{
+body, header, footer, .root-content {
     padding: 0px 20px;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
 }
 
-header
-{
+header {
     z-index: 100;
 }
-.root-content
-{
+
+.root-content {
     z-index: 50;
 }
-footer
-{
+
+footer {
     z-index: 100;
 }
 /* Header styles */
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 
 
-.header-wrapper
-{   
-    position:relative;
-    background-color:brown;
+.header-wrapper {
+    position: relative;
+    background-color: brown;
 }
-.false-header
-{
+
+.false-header {
     height: 100px;
     background-color: black;
     color: white;
@@ -59,25 +58,24 @@ footer
     margin: 0;
     padding: 0;
     width: auto;
-    position:relative;
+    position: relative;
 }
-.ui-menu
-{
-    position:absolute;
-}   
-.ui-state-hover, .ui-widget-header .ui-state-hover
-{
+
+.ui-menu {
+    position: absolute;
+}
+
+.ui-state-hover, .ui-widget-header .ui-state-hover {
     border: none;
 }
 /* Root Content */
 /*-----------------------------------------------------------------------------------------------------------------------------*/
-.root-content
-{
+.root-content {
     min-height: 200px;
     width: 100%;
 }
-.widget-area
-{
+
+.widget-area {
     background-color: aqua;
     min-height: 400px;
     width: 100%;
@@ -86,35 +84,37 @@ footer
 
 /* widgets  */
 /*************************************************************************************************************************************/
-.jdWidget-wrapper
-{
+.jdWidget-wrapper {
     display: inline-block;
-    overflow:hidden;
+    position:absolute;
 }
 
-    .jdWidget-wrapper > div
-    {
+.jdWidget-titlebar-handle {
+    height: 20px;
+    width: 100%;
+    background-color: black;
+}
+
+.jdWidget-content {
+    height: 100%;
+    width: 100%;
+}
+    .jdWidget-content > div {
         padding: 10px 5px;
     }
 
-.jdWidget-titlebar-handle
-{
-    height: 5px;
-    width: 100%;
-    background-color:black;
+.registerloginlink {
+    width: 50%;
 }
-
 
 /* footer style   */
 /*************************************************************************************************************************************/
-.footer-item
-{
-    float:left; 
+.footer-item {
+    float: left;
     margin-right: 5px;
 }
 
-.footer-wrapper
-{
+.footer-wrapper {
     background-color: gray;
     overflow: hidden;
 }

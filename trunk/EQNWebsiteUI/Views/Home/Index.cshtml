@@ -1,4 +1,4 @@
-﻿@using EQNWebsiteUI.Models
+﻿@*@using EQNWebsiteUI.Models
 @{
     WidgetModel[] Widgets = null;
     if(ViewData["Widgets"] != null)
@@ -7,8 +7,8 @@
     }
 }
 
-
-<div class="widget-area">
+<div class="gridster">
+<ul class="widget-area">
     @if (Widgets != null)
     {
         foreach (WidgetModel widget in Widgets)
@@ -17,4 +17,7 @@
             Html.RenderPartial("Widgets/" + widget.widgetType, ViewData);
         }
     }
-</div>
+</ul>
+    </div>*@
+
+
