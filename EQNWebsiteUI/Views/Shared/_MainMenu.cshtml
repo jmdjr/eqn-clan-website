@@ -12,7 +12,7 @@
 
 @if(menu != null)
 {
-    <ul>
+    <ul class="menu-list">
     @foreach(ItemModel item in menu.items)
     {
         @Html.Raw(Html.RenderMenuItems(item))

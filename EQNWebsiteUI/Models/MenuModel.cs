@@ -6,7 +6,6 @@ using System.Xml.Serialization;
 
 namespace EQNWebsiteUI.Models
 {
-    [Serializable]
     [XmlRoot("menu")]
     public class MenuModel
     {
@@ -15,14 +14,13 @@ namespace EQNWebsiteUI.Models
         public ItemModel[] items;
     }
 
-    [Serializable]
     [XmlRoot("item")]
     public class ItemModel
     {
         [XmlAttribute("text")]
         public string text;
 
-        [XmlElement("href")]
+        [XmlAttribute("href")]
         public string href;
 
         [XmlArray("items")]

@@ -185,15 +185,18 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserPageController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\MenuModel.cs" />
+    <Compile Include="Models\WidgetModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Menus\DemoHomePageWidgetLayout.xml" />
     <Content Include="Content\Menus\MainMenu.xml" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_diagonals-thick_15_0b3e6f_40x40.png" />
@@ -208,13 +211,20 @@
     <Content Include="Content\themes\base\images\ui-icons_98d2fb_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_9ccdfc_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui-1.10.4.css" />
     <Content Include="Content\themes\base\jquery-ui-1.10.4.custom.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-ui-menubar.js" />
     <Content Include="Scripts\jQuery-Custom\initialize.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Content\themes\jquery.gridster.css" />
+    <Content Include="Scripts\jquery.gridster.js" />
+    <Content Include="Content\themes\jquery.gridster.min.css" />
+    <Content Include="Scripts\jquery.gridster.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -233,19 +243,6 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Images\accent.png" />
-    <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -260,14 +257,21 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_WidgetLayout.cshtml" />
     <Content Include="Views\Shared\_MainMenu.cshtml" />
+    <Content Include="Views\Shared\Widgets\Login.cshtml" />
+    <Content Include="Views\Shared\Widgets\UserInfo.cshtml" />
+    <Content Include="Views\Shared\Widgets\RSSFeed.cshtml" />
+    <Content Include="Views\Shared\Widgets\TextRegion.cshtml" />
+    <Content Include="Views\Shared\Widgets\ImageGallery.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -288,7 +292,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>52286</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:20902/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
