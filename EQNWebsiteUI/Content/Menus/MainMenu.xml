@@ -2,13 +2,8 @@
 <menu>
   <items>
     <item text="Home" href="/" />
-    <item text="About Us" href="/Account/Login" />
-    <item text="Widgets" href="" >
-      <items>
-        <item text="test1" href="" />
-        <item text="test2" href="" />
-        <item text="test3" href=""></item>
-      </items>
-    </item>
+    <item text="About Us" href="/Home/About" />
+    <item text="Contact Us" href="/Home/Contact" />
+    <item text="Login" href="/Account/Login" />
   </items>
 </menu>

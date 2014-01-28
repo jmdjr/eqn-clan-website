@@ -19,13 +19,23 @@ namespace EQNWebsiteUI.Controllers
             XmlSerializer serial = new XmlSerializer(typeof(MenuModel));
             MenuModel menu = null;
 
-            if(serial.CanDeserialize(reader))
+            try
             {
-                menu = (MenuModel)serial.Deserialize(reader);
+                if (serial.CanDeserialize(reader))
+                {
+                    menu = (MenuModel)serial.Deserialize(reader);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                reader.Close();
             }
 
             ViewData["Menu"] = menu;
-            reader.Close();
 
             return PartialView("_MainMenu");
         }
@@ -37,9 +47,20 @@ namespace EQNWebsiteUI.Controllers
             XmlSerializer serial = new XmlSerializer(typeof(WidgetsCollection));
             WidgetsCollection widgets = null;
 
-            if (serial.CanDeserialize(reader))
+            try
             {
-                widgets = (WidgetsCollection)serial.Deserialize(reader);
+                if (serial.CanDeserialize(reader))
+                {
+                    widgets = (WidgetsCollection)serial.Deserialize(reader);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                reader.Close();
             }
 
             ViewData["Widgets"] = widgets.widgets;
