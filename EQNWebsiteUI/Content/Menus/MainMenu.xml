@@ -3,7 +3,13 @@
   <items>
     <item text="Home" href="/" />
     <item text="About Us" href="/Home/About" />
-    <item text="Contact Us" href="/Home/Contact" />
+    <item text="Contact Us" href="/Home/Contact">
+      <items>
+        <item text="About Us" href="/Home/About" />
+        <item text="About Us" href="/Home/About" />
+        <item text="About Us" href="/Home/About" />
+      </items>
+    </item>
     <item text="Login" href="/Account/Login" />
   </items>
 </menu>

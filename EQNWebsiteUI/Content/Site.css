@@ -24,6 +24,10 @@ body, header, footer, .root-content {
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
 }
 
+body
+{
+    background:black;
+}
 header {
     z-index: 100;
 }
@@ -88,6 +92,7 @@ footer {
     display: inline-block;
     position:absolute;
     z-index: 10;
+    opacity: .9;
 }
 
 .jdWidget-titlebar-handle {

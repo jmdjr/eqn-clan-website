@@ -7,7 +7,21 @@
     }
 }
 
+<style>
+    .canvasStyle
+    {
+        opacity: .5;
+        position:absolute;
+        z-index:999;
+        pointer-events:none;
+    }
+    .gridster
+    {
+        opacity: .5;
+    }
+</style>
 <div class="gridster">
+<canvas id="myCanvas" class="canvasStyle" height="1000" width="1188"></canvas>
 <ul class="widget-area">
     @if (Widgets != null)
     {
@@ -20,4 +34,4 @@
 </ul>
     </div>
 
-
+<script src="~/Scripts/jQuery-Custom/SmokeyClearEffect.js"></script>
