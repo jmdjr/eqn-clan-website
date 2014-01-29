@@ -209,8 +209,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Menus\DemoHomePageWidgetLayout.xml" />
-    <Content Include="Content\Menus\MainMenu.xml" />
+    <Content Include="Content\Menus\DemoHomePageWidgetLayout.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Menus\MainMenu.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_diagonals-thick_15_0b3e6f_40x40.png" />
     <Content Include="Content\themes\base\images\ui-bg_dots-medium_30_0b58a2_4x4.png" />
@@ -228,6 +232,8 @@
     <Content Include="Content\themes\base\jquery-ui-1.10.4.custom.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Smoke10.png" />
+    <Content Include="Scripts\jQuery-Custom\SmokeyClearEffect.js" />
     <Content Include="Scripts\jquery-ui-menubar.js" />
     <Content Include="Scripts\jQuery-Custom\initialize.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -287,7 +293,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
