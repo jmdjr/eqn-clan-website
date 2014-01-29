@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <widgetCollection>
   <widgets>
-    <widget positionX="1" positionY="1" columnX="1" columnY="1" type="RSSFeed" />
-    <widget positionX="1" positionY="1" columnX="1" columnY="1" type="TextRegion" />
-    <widget positionX="1" positionY="1" columnX="1" columnY="1" type="UserInfo" />
-    <widget positionX="1" positionY="1" columnX="1" columnY="1" type="Login" />
+    <widget positionX="1" positionY="1" sizeX="1" sizeY="1" type="UserInfo" />
+    <widget positionX="2" positionY="1" sizeX="1" sizeY="2" type="TextRegion" />
+    <widget positionX="1" positionY="2" sizeX="2" sizeY="1" type="ImageGallery" />
+    <widget positionX="2" positionY="2" sizeX="5" sizeY="2" type="RSSFeed" />
+    <widget positionX="3" positionY="1" sizeX="1" sizeY="1" type="Login" />
   </widgets>
 </widgetCollection>
