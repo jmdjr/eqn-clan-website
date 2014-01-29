@@ -23,11 +23,11 @@ namespace EQNWebsiteUI.Models
         [XmlAttribute("positionY")]
         public int positionY;
 
-        [XmlAttribute("columnX")]
-        public int columnX;
+        [XmlAttribute("sizeX")]
+        public int sizeX;
 
-        [XmlAttribute("columnY")]
-        public int columnY;
+        [XmlAttribute("sizeY")]
+        public int sizeY;
 
         [XmlAttribute("type")]
         public string widgetType;
