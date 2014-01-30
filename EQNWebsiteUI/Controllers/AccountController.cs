@@ -8,13 +8,11 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using EQNWebsiteUI.Filters;
 using EQNWebsiteUI.Models;
 
 namespace EQNWebsiteUI.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
     public class AccountController: BaseController
     {
         //
@@ -24,7 +22,7 @@ namespace EQNWebsiteUI.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            return PartialView();
         }
 
         //
@@ -263,7 +261,7 @@ namespace EQNWebsiteUI.Controllers
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
-                using (UsersContext db = new UsersContext())
+                using (SecurityBasicsContext db = new SecurityBasicsContext())
                 {
                     UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Check if user already exists
