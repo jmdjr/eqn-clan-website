@@ -1,4 +1,15 @@
-﻿// Create an array to store our particles
+﻿
+// shim layer with setTimeout fallback
+window.requestAnimFrame = (function () {
+    return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 1000 / targetFPS);
+            };
+})();
+
+// Create an array to store our particles
 var particles = [];
 
 // The amount of particles to render
@@ -183,6 +194,8 @@ function init() {
             particle.setVelocity(generateRandom(-maxVelocity, maxVelocity), generateRandom(-maxVelocity, maxVelocity));
             particles.push(particle);
         }
+
+        Run();
     }
     else {
         alert("Please use a modern browser");
@@ -191,9 +204,7 @@ function init() {
 
 // The function to draw the scene
 function draw() {
-    // Clear the drawing surface and fill it with a black background
-    context.fillStyle = "rgba(0, 0, 0, 0.5)";
-    context.fillRect(0, 0, canvasWidth, canvasHeight);
+    context.clearRect(0, 0, canvasWidth, canvasHeight);
 
     // Go through all of the particles and draw them.
     particles.forEach(function (particle) {
@@ -208,16 +219,14 @@ function update() {
     });
 }
 
+function Run() {
+    if (context) {
+        requestAnimFrame(Run);
+        update();
+        draw();
+    }
+};
+
 // Initialize the scene
 init();
 
-// If the context is set then we can draw the scene (if not then the browser does not support canvas)
-if (context) {
-    setInterval(function () {
-        // Update the scene befoe drawing
-        update();
-
-        // Draw the scene
-        draw();
-    }, 1000 / targetFPS);
-}
