@@ -199,16 +199,21 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserPageController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\SecurityBasicsContext.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\WidgetModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SecurityBasicsDb.mdf" />
+    <Content Include="App_Data\SecurityBasicsDb_log.ldf">
+      <DependentUpon>SecurityBasicsDb.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\Menus\DemoHomePageWidgetLayout.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -241,6 +246,8 @@
     <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="Content\themes\jquery.gridster.css" />
+    <Content Include="Scripts\jquery-magnificent-popup.js" />
+    <Content Include="Scripts\jquery.colorbox.js" />
     <Content Include="Scripts\jquery.gridster.js" />
     <Content Include="Content\themes\jquery.gridster.min.css" />
     <Content Include="Scripts\jquery.gridster.min.js" />
@@ -291,9 +298,7 @@
       <SubType>Code</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
