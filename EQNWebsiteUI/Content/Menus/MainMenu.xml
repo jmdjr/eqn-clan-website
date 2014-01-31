@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu>
   <items>
-    <item text="Home" href="/" />
     <item text="About Us" href="/Home/About" />
     <item text="Contact Us" href="/Home/Contact" />
     <item text="Login" href="/Account/Login" />

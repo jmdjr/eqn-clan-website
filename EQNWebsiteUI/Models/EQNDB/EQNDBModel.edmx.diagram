@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ae8507b465cf4bdaa89815cad7a2c667" Name="Diagram1">
+        <EntityTypeShape EntityType="EQNDBModel.User" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EQNDBModel.Image" Width="1.5" PointX="8" PointY="4.25" />
+        <EntityTypeShape EntityType="EQNDBModel.Article" Width="1.5" PointX="11.125" PointY="2.125" />
+        <EntityTypeShape EntityType="EQNDBModel.ArticleImage" Width="1.5" PointX="11.125" PointY="5.375" />
+        <EntityTypeShape EntityType="EQNDBModel.Widget" Width="1.5" PointX="3.75" PointY="5.625" />
+        <EntityTypeShape EntityType="EQNDBModel.WidgetType" Width="1.5" PointX="0.875" PointY="5.625" />
+        <EntityTypeShape EntityType="EQNDBModel.UserWidget" Width="1.5" PointX="3.625" PointY="2.25" />
+        <AssociationConnector Association="EQNDBModel.UserWidgetUser" />
+        <AssociationConnector Association="EQNDBModel.WidgetUserWidget" />
+        <EntityTypeShape EntityType="EQNDBModel.WidgetSetting" Width="1.5" PointX="1" PointY="0.5" />
+        <AssociationConnector Association="EQNDBModel.WidgetSettingUserWidget" />
+        <AssociationConnector Association="EQNDBModel.ImageUser" />
+        <AssociationConnector Association="EQNDBModel.WidgetTypeWidget" />
+        <AssociationConnector Association="EQNDBModel.ImageArticleImage" />
+        <AssociationConnector Association="EQNDBModel.ArticleArticleImage" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

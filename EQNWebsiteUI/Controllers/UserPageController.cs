@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace EQNWebsiteUI.Controllers
 {
-    public class UserPageController : Controller
+    public class UserPageController : BaseController
     {
         //
         // GET: /UserPage/
@@ -14,6 +14,10 @@ namespace EQNWebsiteUI.Controllers
         public ActionResult Index(string userName = "current")
         {
             // get from database user's page. current user relies on the currently logged in individual.
+            // if the user is not logged in, present an alternate page stating something like they should register to take advantage of
+            //   the customizeable user page, when those are done.
+
+            GetWidgets();
             return View();
         }
 
