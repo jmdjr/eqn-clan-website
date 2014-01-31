@@ -10,18 +10,17 @@ namespace EQNWebsiteUI.Controllers
     {
         public ActionResult Index()
         {
-            GetWidgets();
             return View();
         }
 
         public ActionResult About()
         {
-            return View();
+            return PartialView();
         }
 
         public ActionResult Contact()
         {
-            return View();
+            return PartialView();
         }
     }
 }

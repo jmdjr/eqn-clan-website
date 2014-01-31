@@ -9,6 +9,7 @@ using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using EQNWebsiteUI.Models;
+// using EQNWebsiteUI.Models.EQNDB;
 
 namespace EQNWebsiteUI.Controllers
 {

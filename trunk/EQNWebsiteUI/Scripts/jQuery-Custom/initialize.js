@@ -1,6 +1,6 @@
 ﻿var gridster;
 $(function () {
-    $('.menu-list').menubar();
+    $('.menu-list').menu();
 
     gridster = $('.widget-area').gridster({
         widget_margins: [0, 0],
