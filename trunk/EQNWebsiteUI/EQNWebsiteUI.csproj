@@ -214,6 +214,7 @@
     <Content Include="App_Data\SecurityBasicsDb_log.ldf">
       <DependentUpon>SecurityBasicsDb.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\magnificent-popup.css" />
     <Content Include="Content\Menus\DemoHomePageWidgetLayout.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -239,6 +240,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\Smoke10.png" />
     <Content Include="Scripts\jQuery-Custom\jquery-activity-navigation.js" />
+    <Content Include="Scripts\jQuery-Custom\OriginalSmokeyEffect.js" />
     <Content Include="Scripts\jQuery-Custom\SmokeyClearEffect.js" />
     <Content Include="Scripts\jQuery-Custom\UsefulExtensions.js" />
     <Content Include="Scripts\jquery-ui-menubar.js" />
@@ -263,7 +265,9 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -300,6 +304,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Shared\_UserPagePartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,21 +1,13 @@
 ﻿@model EQNWebsiteUI.Models.LoginModel
 
-@{
-    ViewBag.Title = "Log in";
-}
-
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
-
-<section id="loginForm">
-<h2>Use a local account to log in.</h2>
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+<div id="loginForm" style="overflow:hidden; padding: 0px 20px;">
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Log in Form</legend>
+    <div style="height:44px;"></div>
+    <fieldset style="padding: 0px 10px">
+        <legend></legend>
         <ol>
             <li>
                 @Html.LabelFor(m => m.UserName)
@@ -38,13 +30,4 @@
         @Html.ActionLink("Register", "Register") if you don't have an account.
     </p>
 }
-</section>
-
-<section class="social" id="socialLoginForm">
-    <h2>Use another service to log in.</h2>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</div>

@@ -193,7 +193,8 @@ var access = new function () {
         },
 
         // Initialise the scene and set the canvasContext if possible
-        init: function(context) {
+        init: function (context) {
+            debugger;
             if (context.getContext) {
                 var _o = { cache: access.cache(context), defaults: access.defaults(context) };
                 // Once the callback is arranged then set the source of the image
@@ -201,13 +202,15 @@ var access = new function () {
 
                 // Once the image has been downloaded then set the image on all of the particles
                 globals.imageObj.onload = function () {
+                    debugger;
                     globals.particles.forEach(function (particle) {
-                        particle.setImage(imageObj);
+                        particle.setImage(globals.imageObj);
                     });
                 };
 
                 // Set the canvasContext variable so it can be re-used
                 _o.cache.canvasContext = context.getContext('2d');
+                access.defaults(context, _o.defaults);
 
                 $('body').on("mousemove", function (event) {
                     globals.mousePos = { x: event.x - this.offsetX, y: event.y - this.offsetY };
@@ -226,19 +229,21 @@ var access = new function () {
                     access.defaults(context, _o.defaults);
                 });
 
+                var maxVelocity = methods.initialDefaults.maxVelocity;
+                
                 // Create the particles and set their initial positions and velocities
                 for (var i = 0; i < _o.defaults.particleCount; ++i) {
-                    var particle = new Particle(canvasContext);
+                    var particle = new Particle(_o.cache.canvasContext);
 
                     // Set the position to be inside the canvas bounds
-                    particle.setPosition(generateRandom(0, canvasWidth), generateRandom(0, _o.c));
+                    particle.setPosition(methods.generateRandom(0, _o.defaults.canvas.width), methods.generateRandom(0, _o.defaults.canvas.height));
 
                     // Set the initial velocity to be either random and either negative or positive
-                    particle.setVelocity(generateRandom(-maxVelocity, maxVelocity), generateRandom(-maxVelocity, maxVelocity));
-                    particles.push(particle);
+                    particle.setVelocity(methods.generateRandom(-maxVelocity, maxVelocity), methods.generateRandom(-maxVelocity, maxVelocity));
+                    globals.particles.push(particle);
                 }
 
-                Run();
+                methods.Run();
             }
             else {
                 alert("Please use a modern browser");
@@ -247,7 +252,7 @@ var access = new function () {
         
         // The function to draw the scene
         draw: function() {
-            canvasContext.clearRect(0, 0, canvasWidth, canvasHeight);
+            globals.canvasContext.clearRect(0, 0, canvasWidth, canvasHeight);
 
             // Go through all of the particles and draw them.
             particles.forEach(function (particle) {
@@ -264,10 +269,10 @@ var access = new function () {
         },
 
         Run: function() {
-            if (canvasContext) {
+            if (globals.canvasContext) {
                 requestAnimFrame(Run);
-                update();
-                draw();
+                methods.update();
+                methods.draw();
             }
         },
 

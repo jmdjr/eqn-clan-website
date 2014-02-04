@@ -16,6 +16,8 @@ html, body {
     width: 100%;
     margin: 0px;
     padding: 0px;
+    font-size: 16pt;
+    font-family:'Matura MT Script Capitals';
 }
 
 body, header, footer, .root-content {
@@ -28,17 +30,19 @@ body, header, footer, .root-content {
 body
 {
     background:black;
-}
-header {
-    z-index: 100;
+    height: 100%;
 }
 
-.root-content {
-    z-index: 50;
+header {
+    z-index: 100;
+    min-height: 72px;
+    height: 10%;
 }
 
 footer {
     z-index: 100;
+    height: 10%;
+    min-height: 32px;
 }
 
 /* Layout elements style */
@@ -56,11 +60,9 @@ footer {
 
 .header-wrapper {
     position: relative;
-    background-color: brown;
 }
 
 .false-header {
-    height: 100px;
     background-color: black;
     color: white;
 }
@@ -83,11 +85,36 @@ footer {
 .ui-state-hover, .ui-widget-header .ui-state-hover {
     border: none;
 }
+
+.menu-list {
+    position:relative;
+    clear:both;
+    overflow: hidden;
+}
+
+    .menu-list .menuitem {
+        float: left;
+        display: inline-block;
+        border: 2px solid #B835FF;
+        border-radius: 3px;
+        padding: 5px;
+        background-color: #7F00FF;
+    }
+
+        .menu-list .menuitem a {
+            color: white !important;
+            font-family: Arial;
+            font-size: 12px;
+        }
+
+
 /* Root Content */
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 .root-content {
-    min-height: 200px;
-    width: 100%;
+    z-index: 50;
+    min-height: 352px;
+    height: 80%;
+
 }
 
 .widget-area {

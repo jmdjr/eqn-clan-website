@@ -2,7 +2,15 @@
 <menu>
   <items>
     <item text="About Us" href="/Home/About" />
+    <item text="Code of Conduct" href="#"/>
+    <item text="Heirarchy" href="#"/>
+    <item text="Roster" href="#" />
+    <item text="Charter" href="#" />
+    <item text="Wiki" href="#" />
+    <item text="Guild Archives" href="#" />
+    <item text="Events" href="#" />
+    <item text="Crafters" href="#" />
+    <item text="Gallery" href="#" />
     <item text="Contact Us" href="/Home/Contact" />
-    <item text="Login" href="/Account/Login" />
   </items>
 </menu>
