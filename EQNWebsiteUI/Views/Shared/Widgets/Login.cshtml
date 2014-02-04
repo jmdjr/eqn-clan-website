@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_WidgetLayout.cshtml";
 }
-<div style="background-color:yellow;">
+<div>
 @if (Request.IsAuthenticated) {
     <text>
         Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
@@ -12,8 +12,22 @@
     </text>
 } else {
     <ul>
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "registerloginlink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "registerloginlink" })</li>
+        <li>
+            @*@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "registerloginlink" })*@
+            <a class="open-popup-link" href="/Account/Login">Login</a>
+        </li>
+        @*<li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "registerloginlink" })</li>*@
     </ul>
 }
 </div>
+<script>
+    $('.open-popup-link').magnificPopup({
+        delgate: 'a',
+        type: 'ajax',
+        disableOn: 700,
+        removalDelay: 160,
+        mainClass: 'mfp-fade',
+
+        midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+    });
+</script>

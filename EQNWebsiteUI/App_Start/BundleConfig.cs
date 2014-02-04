@@ -14,7 +14,8 @@ namespace EQNWebsiteUI
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.custom.js",
                         "~/Scripts/jquery-ui-menubar.js",
-                        "~/Scripts/jquery.gridster.js"));
+                        "~/Scripts/jquery.gridster.js",
+                        "~/Scripts/jquery-magnificent-popup.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-custom").Include(
                         "~/Scripts/jQuery-Custom/initialize.js"));
@@ -29,7 +30,8 @@ namespace EQNWebsiteUI
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/themes/base/jquery-ui-1.10.4.custom.css", 
+                "~/Content/themes/base/jquery-ui-1.10.4.custom.css",
+                "~/Content/magnificent-popup.css",
                 "~/Content/site.css"));
         }
     }

@@ -13,7 +13,9 @@
         opacity: .5;
     }
 </style>
-<div class="gridster">
+<canvas id="TopLayerCanvas" class="canvasStyle"></canvas>
+
+@*<div class="gridster">
 <ul class="widget-area">
     @if (Widgets != null)
     {
@@ -24,9 +26,11 @@
         }
     }
 </ul>
-    </div>
+    </div>*@
 
-<script src="~/Scripts/jQuery-Custom/SmokeyClearEffect.js"></script>
+<script src="~/Scripts/jQuery-Custom/OriginalSmokeyEffect.js"></script>
 <script>
-    $('#TopLayerCanvas').SmokeyCanvas();
+    $(document).ready(function () {
+        $('#TopLayerCanvas').SmokeyCanvas();
+    });
 </script>

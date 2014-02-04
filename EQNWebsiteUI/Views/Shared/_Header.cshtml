@@ -1,6 +1,26 @@
-﻿<div class="header-wrapper">
+﻿@using EQNWebsiteUI.Models
+@{
+    ViewData["widget"] = new WidgetModel();
+}
+
+<style>
+    .jdWidget-wrapper {
+        position:relative;
+        height:100px;
+        width: 100px;
+    }
+    .jdWidget-content > div {
+        padding: 0px;
+    }
+    .jdWidget-titlebar-handle {
+        display:none;
+    }
+</style>
+<div class="header-wrapper">
     @*here is where the logo goes for our webpage.*@
-    <div class="false-header"> This is a pretend banner logo... :D</div>
+    <ul style="height: 75px; width: 75px;">
+        @Html.Partial("Widgets/Login", ViewData)
+    </ul>
     @Html.Action("MainMenu", "Base")
 
 </div>
