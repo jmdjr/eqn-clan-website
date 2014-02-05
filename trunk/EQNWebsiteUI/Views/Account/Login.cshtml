@@ -1,13 +1,13 @@
 ﻿@model EQNWebsiteUI.Models.LoginModel
 
-<div id="loginForm" style="overflow:hidden; padding: 0px 20px;">
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+<div id="loginForm" class="AjaxFormWrapper">
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     <div style="height:44px;"></div>
-    <fieldset style="padding: 0px 10px">
-        <legend></legend>
+    <fieldset>
+        <legend>Login</legend>
         <ol>
             <li>
                 @Html.LabelFor(m => m.UserName)
@@ -24,10 +24,20 @@
                 @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
             </li>
         </ol>
-        <input type="submit" value="Log in" />
+        <input type="submit" id="AjaxForm-SubmitButton" value="Log in" />
     </fieldset>
     <p>
         @Html.ActionLink("Register", "Register") if you don't have an account.
     </p>
 }
 </div>
+<script>
+    function submitLogin() {
+
+        $.get('/Account/Login', 
+            function(){
+            },
+    }
+
+    
+</script>

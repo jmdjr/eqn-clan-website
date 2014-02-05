@@ -218,6 +218,9 @@ function update() {
             var $parent = $this.parent();
             if (this[0].getContext) {
 
+                var definedDefaults = $.extend(true, {}, defaults, options);
+                access.defaults(context, definedDefaults);
+
                 // Set the context variable so it can be re-used
                 context = this[0].getContext('2d');
                 $parent.on("mousemove", function (event) {
@@ -234,17 +237,16 @@ function update() {
                 $this.attr('width', $parent.innerWidth() - widthDiff);
 
                 $(window).resize(function () {
-
                     var heightDiff = parseInt($parent.css('padding-top').replace('px', '')) + parseInt($parent.css('padding-bottom').replace('px', ''));
                     var widthDiff = parseInt($parent.css('padding-left').replace('px', '')) + parseInt($parent.css('padding-right').replace('px', ''));
                     $this.attr('height', $parent.innerHeight() - heightDiff);
                     $this.attr('width', $parent.innerWidth() - widthDiff);
                 });
 
-                var maxVelocity = defaults.maxVelocity;
+                var maxVelocity = definedDefaults.maxVelocity;
 
                 // Create the particles and set their initial positions and velocities
-                for (var i = 0; i < defaults.particleCount; ++i) {
+                for (var i = 0; i < definedDefaults.particleCount; ++i) {
                     var particle = new Particle(context);
 
                     // Set the position to be inside the canvas bounds
@@ -259,9 +261,6 @@ function update() {
                 alert("Please use a modern browser");
             }
 
-            var definedDefaults = $.extend(true, {}, defaults, options);
-
-            access.defaults(context, defaults);
 
             //requestAnimationFrame(function () { update(); draw(); });
 

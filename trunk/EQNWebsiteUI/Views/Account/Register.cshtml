@@ -1,19 +1,12 @@
 ﻿@model EQNWebsiteUI.Models.RegisterModel
-@{
-    ViewBag.Title = "Register";
-}
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
-</hgroup>
-
+<div id="registerForm" class="AjaxFormWrapper">
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
-
+    <div style="height:44px;"></div>
     <fieldset>
-        <legend>Registration Form</legend>
+        <legend>Register</legend>
         <ol>
             <li>
                 @Html.LabelFor(m => m.UserName)
@@ -31,7 +24,4 @@
         <input type="submit" value="Register" />
     </fieldset>
 }
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    </div>
