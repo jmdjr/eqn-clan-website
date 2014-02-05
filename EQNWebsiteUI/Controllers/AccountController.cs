@@ -36,12 +36,13 @@ namespace EQNWebsiteUI.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie : model.RememberMe))
             {
-                return RedirectToAction("Index", "Home");
+                return null;
             }
 
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return View(model);
+            return null;
+            //return PartialView(model);
         }
 
         //
@@ -53,7 +54,7 @@ namespace EQNWebsiteUI.Controllers
         {
             WebSecurity.Logout();
 
-            return RedirectToAction("Index", "Home");
+            return null;
         }
 
         //
@@ -62,7 +63,7 @@ namespace EQNWebsiteUI.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            return PartialView();
         }
 
         //
@@ -89,7 +90,8 @@ namespace EQNWebsiteUI.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            //return View(model);
+            return null;
         }
 
         //
