@@ -41,8 +41,7 @@ namespace EQNWebsiteUI.Controllers
 
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return null;
-            //return PartialView(model);
+            return PartialView(model);
         }
 
         //

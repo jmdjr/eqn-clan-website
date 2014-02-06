@@ -24,6 +24,15 @@ $.extend({
         }
     },
 
+    appendToHash: function (hash, key, value) {
+        hash.push(key);
+        hash[key] = value;
+    },
+
+    getHashLastKeyValue: function (hash) {
+        return { key: hash[hash.length - 1], value: hash[hash[hash.length - 1]] };
+    },
+
     stringifyHash: function (varhash) {
         var str = "";
         this.iterateHash(varhash, function (a, b) { str = str + a + "=" + b + "&"; });

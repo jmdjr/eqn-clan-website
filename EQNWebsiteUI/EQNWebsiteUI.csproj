@@ -240,6 +240,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\Smoke10.png" />
     <Content Include="Scripts\jQuery-Custom\jquery-activity-navigation.js" />
+    <Content Include="Scripts\jQuery-Custom\NewsFeed.js" />
     <Content Include="Scripts\jQuery-Custom\OriginalSmokeyEffect.js" />
     <Content Include="Scripts\jQuery-Custom\SmokeyClearEffect.js" />
     <Content Include="Scripts\jQuery-Custom\UsefulExtensions.js" />

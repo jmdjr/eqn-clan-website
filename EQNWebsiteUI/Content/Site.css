@@ -115,7 +115,7 @@ footer {
 
 /* Root Content */
 /*-----------------------------------------------------------------------------------------------------------------------------*/
-.root-content {
+.root-content, .NewsFeedWrapper, .InteractiveDisplayWrapper {
     z-index: 50;
     min-height: 600px;
 }
@@ -140,6 +140,22 @@ footer {
         color: white;
         background-color: #7B68EE;
     }
+.NewsFeedWrapper {
+    position: relative;
+    width: 20%;
+    float:left;
+    height:100%;
+}
+
+.InteractiveDisplayWrapper {
+    position: relative;
+    display: inline-block;
+    float:left;
+    height:100%;
+    width: 80%;
+    overflow:hidden;
+
+}
 /* widgets  */
 /*************************************************************************************************************************************/
 .jdWidget-wrapper {
