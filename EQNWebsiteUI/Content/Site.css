@@ -20,7 +20,7 @@ html, body {
     font-family:'Matura MT Script Capitals';
 }
 html {
-    min-height: 900px;
+    min-height: 720px;
 }
 
 body, header, footer, .root-content {
@@ -35,18 +35,12 @@ body {
 
 header {
     z-index: 100;
-    min-height: 150px;
+    min-height: 124px;
+    margin-bottom: 15px;
 }
-
-.root-content
-{
-    background:black;
-    min-height: 600px;
-}
-
 footer {
     z-index: 100;
-    min-height: 150px;
+    min-height: 75px;
 }
 
 /* Layout elements style */
@@ -107,7 +101,7 @@ footer {
     }
 
         .menu-list .menuitem a {
-            color: white !important;
+            color: white;
             font-family: Arial;
             font-size: 12px;
         }
@@ -117,7 +111,7 @@ footer {
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 .root-content, .NewsFeedWrapper, .InteractiveDisplayWrapper {
     z-index: 50;
-    min-height: 600px;
+    min-height: 500px;
 }
 
 .widget-area {
@@ -140,11 +134,24 @@ footer {
         color: white;
         background-color: #7B68EE;
     }
+
 .NewsFeedWrapper {
     position: relative;
-    width: 20%;
+    width: 30%;
     float:left;
     height:100%;
+    border: 2px solid #B835FF;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: #7F00FF;
+    overflow:hidden;
+}
+
+.NewsFeed a {
+
+    color: white;
+    font-family: Arial;
+    font-size: 12pt;
 }
 
 .InteractiveDisplayWrapper {
@@ -152,7 +159,7 @@ footer {
     display: inline-block;
     float:left;
     height:100%;
-    width: 80%;
+    width: 70%;
     overflow:hidden;
 
 }

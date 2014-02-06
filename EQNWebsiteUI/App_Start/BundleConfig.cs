@@ -15,6 +15,7 @@ namespace EQNWebsiteUI
                         "~/Scripts/jquery-ui-{version}.custom.js",
                         "~/Scripts/jquery-ui-menubar.js",
                         "~/Scripts/jquery.gridster.js",
+                        "~/Scripts/mustache.js",
                         "~/Scripts/jquery-magnificent-popup.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-custom").Include(

@@ -12,9 +12,28 @@
     {
         opacity: .5;
     }
-</style>
 
-<div class="NewsFeedWrapper"></div>
+    .NewsFeed {
+        overflow-y: scroll;
+        height: 426px;
+    }
+    .NewsFeedEntry {
+        margin-bottom: 20px;
+        padding-bottom: 5px;
+        border-bottom: 1px dashed white;
+        color: white;
+    }
+
+    @@media all and (max-width: 822px), (max-height: 602px) {
+        .InteractiveDisplayWrapper {
+            display: none;
+        }
+    }
+</style>
+<div class="NewsFeedWrapper">
+    <h1>News Feed</h1>
+    <div class="NewsFeed"></div>
+</div>
 
 <div class="InteractiveDisplayWrapper">
     <canvas id="TopLayerCanvas" class="canvasStyle"></canvas>
@@ -37,6 +56,17 @@
 <script>
     $('#TopLayerCanvas').SmokeyCanvas({
         particleCount: 250
+    });
+
+    var partialTemplate = "{{#entries}}<div class='NewsFeedEntry'><a href='{{link}}'>{{title}}</a></div>{{/entries}}";
+    var feed = new google.feeds.Feed('https://forums.station.sony.com/everquestnext/index.php?forums/-/index.rss');
+    feed.setNumEntries(20); //Google Feed API method
+    feed.load(function (data) {
+        var view = data.feed;
+        // Parse data depending on the specified response format, default is JSON.
+        var output = Mustache.render(partialTemplate, view);
+
+        $('.NewsFeed').empty().append(output);
     });
 </script>
 }

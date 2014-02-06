@@ -13,12 +13,55 @@ namespace EQNWebsiteUI.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult AboutUs()
         {
             return PartialView();
         }
 
-        public ActionResult Contact()
+        public ActionResult CodeIfConduct()
+        {
+            return PartialView();
+        }
+        public ActionResult Heirarchy()
+        {
+            return PartialView();
+        }
+        public ActionResult Roster()
+        {
+            return PartialView();
+        }
+
+        public ActionResult Charter()
+        {
+            return PartialView();
+        }
+
+        public ActionResult Wiki()
+        {
+            return PartialView();
+        }
+
+        public ActionResult GuildArchives()
+        {
+            return PartialView();
+        }
+
+        public ActionResult Events()
+        {
+            return PartialView();
+        }
+
+        public ActionResult Crafters()
+        {
+            return PartialView();
+        }
+
+        public ActionResult Gallery()
+        {
+            return PartialView();
+        }
+
+        public ActionResult ContactUs()
         {
             return PartialView();
         }

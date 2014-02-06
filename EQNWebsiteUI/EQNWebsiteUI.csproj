@@ -247,6 +247,7 @@
     <Content Include="Scripts\jquery-ui-menubar.js" />
     <Content Include="Scripts\jQuery-Custom\initialize.js" />
     <Content Include="Scripts\jQuery-Custom\jQuery.DisplayWidget.js" />
+    <None Include="Properties\PublishProfiles\Standard.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
@@ -266,6 +267,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\mustache.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -287,8 +289,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -306,6 +306,17 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Shared\_UserPagePartial.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Home\Gallery.cshtml" />
+    <Content Include="Views\Home\Crafters.cshtml" />
+    <Content Include="Views\Home\Events.cshtml" />
+    <Content Include="Views\Home\GuildArchives.cshtml" />
+    <Content Include="Views\Home\Wiki.cshtml" />
+    <Content Include="Views\Home\Charter.cshtml" />
+    <Content Include="Views\Home\Roster.cshtml" />
+    <Content Include="Views\Home\Heirarchy.cshtml" />
+    <Content Include="Views\Home\CodeIfConduct.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
