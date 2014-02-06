@@ -18,6 +18,8 @@ namespace EQNWebsiteUI
                         "~/Scripts/jquery-magnificent-popup.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-custom").Include(
+                        "~/Scripts/jQuery-Custom/UsefulExtensions.js",
+                        "~/Scripts/jQuery-Custom/OriginalSmokeyEffect.js",
                         "~/Scripts/jQuery-Custom/initialize.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

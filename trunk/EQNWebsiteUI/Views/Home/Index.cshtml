@@ -13,7 +13,12 @@
         opacity: .5;
     }
 </style>
-<canvas id="TopLayerCanvas" class="canvasStyle"></canvas>
+
+<div class="NewsFeedWrapper"></div>
+
+<div class="InteractiveDisplayWrapper">
+    <canvas id="TopLayerCanvas" class="canvasStyle"></canvas>
+</div>
 
 @*<div class="gridster">
 <ul class="widget-area">
@@ -28,9 +33,10 @@
 </ul>
     </div>*@
 
-<script src="~/Scripts/jQuery-Custom/OriginalSmokeyEffect.js"></script>
+@section scripts {
 <script>
     $('#TopLayerCanvas').SmokeyCanvas({
-        particleCount: 500
+        particleCount: 250
     });
 </script>
+}

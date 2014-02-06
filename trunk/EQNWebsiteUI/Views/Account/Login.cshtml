@@ -1,11 +1,10 @@
 ﻿@model EQNWebsiteUI.Models.LoginModel
 
-<div id="loginForm" class="AjaxFormWrapper">
-@using (Html.BeginForm())
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "loginForm" }))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
     <div style="height:44px;"></div>
+<div id="loginForm" class="AjaxFormWrapper">
     <fieldset>
         <legend>Login</legend>
         <ol>
@@ -29,15 +28,17 @@
     <p>
         @Html.ActionLink("Register", "Register") if you don't have an account.
     </p>
-}
 </div>
+    @Html.ValidationSummary()
+}
 <script>
-    function submitLogin() {
-
-        $.get('/Account/Login', 
-            function(){
-            },
-    }
-
-    
+    $('#loginForm > form').submit(function (e) {
+        var postData = $(this).serializeArray();
+        $.post('/Account/Login',
+            postData,
+            function (data) {
+                $("#loginForm").empty().append(data);
+            });
+        e.preventDefault();
+    });
 </script>
