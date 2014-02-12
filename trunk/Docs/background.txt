@@ -1,11 +1,19 @@
-﻿<div class="pageContent-AboutUs">	
-    The balance between Good and Evil is delicate, even in the most ideal of situations.  If not for blood-thirsty tyrants and devoted paladins, we might lose the concept entirely.  But where the confusion lies, where the shades of black and white fade gray, is a point of contention for philosophical debate...even amongst the gods themselves.  
+
+
+	The balance between Good and Evil is delicate, even in the most ideal of situations.  If not for blood-thirsty tyrants and devoted paladins, we might lose the concept entirely.  But where the confusion lies, where the shades of black and white fade gray, is a point of contention for philosophical debate...even amongst the gods themselves.  
 	For what exactly defines alignment if not for perception and interpretation of socially acceptable actions, regardless of intent?  Does the devoted paladin still walk the righteous path if his exploits lead to the occasional death of nearby innocents?  Are they considered casualties for the greater good?  How about the reclusive hermit living alone, who murders a band of adventurers in self defense, for wandering into his lair and looting his belongings?  No matter how eccentric the hermit is... no matter if society condemns him as a murderer... no matter if history itself will label him as such...  Does all this make history correct?  History is written by those with their own perceptions and interpretations.
-	Within every soul is the potential for ultimate Evil and ultimate Good.<br />
+	Within every soul is the potential for ultimate Evil and ultimate Good.
 	The Prophet teaches us that the divine goddess Anashti once promised immortality to her disciples.  Detesting the disease ravaged lands, she devised a way to bestow upon her followers everlasting life and immunity from disease.  Knowing that her ingenious plan would perhaps be considered the greatest of achievements, "The Deceiver" would-be-god Rodcet Nife attempted to take credit of her idea as his own.  He haphazardly cast his own enchantment across Norrath, thinking to beat Anashti to her goal.  However, he lacked Anashti's skill and failed with disasterous effect.  Fearing retribution from the gods, he tricked them into believing Anashti responsible for his failure.
-	But even gods are subject to their own perceptions and interpretations.<br />
+	But even gods are subject to their own perceptions and interpretations.
 	Anashti was sentenced to non-existence.  She was, however, more powerful than even they realized.  Their attempt to destroy her was in vain as she survived the banishment and eventually found her way back to Norrath.
-	The goddess has been known by many names.  "The Prime Healer", "The Undying", "The Forgotten Goddess"... but we know her as "The Reaper".<br />
+	The goddess has been known by many names.  "The Prime Healer", "The Undying", "The Forgotten Goddess"... but we know her as "The Reaper".
 	As followers of Anashti, we realize that death comes to all.  It is indiscriminate in nature.  It is of no consequence, where you come from, the way you speak or the color of your skin.  For some it comes quick, stealthy in its finality, the Reapers touch.  For others it is a long hellish journey, one of anguish, suffering and misery.  There is no escape, no way to outwit and no chance to prevail.  Death has no equal and thus deserves our respect.
 	Anashti Death Disciples formed together at the crux of a new age.  We believe every soul should lead their lives without the fear of death.  We strive to follow her teachings and those of her Prophet.  We acknowledge varying beliefs as to the Goddess's true purpose.  It is a matter of your own personal perceptions and interpretations.  Some believe she will still grant everlasting life.  Others believe that after death, she will welcome them with honor and esteem.  Some show respect for Death by attempting to evade its inevitability by safeguarding others.  Others show respect to Death by indiscriminately dealing it out to their adversaries.  Regardless to your perception of Anashti's intentions and regardless to your relationship with Death...  as an Anashti Death Disciple we welcome you into our ranks.
-</div>
+
+
+
+
+
+
+
+

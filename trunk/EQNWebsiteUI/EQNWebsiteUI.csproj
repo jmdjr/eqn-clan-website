@@ -238,6 +238,7 @@
     <Content Include="Content\themes\base\jquery-ui-1.10.4.custom.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Header2.png" />
     <Content Include="Images\Smoke10.png" />
     <Content Include="Scripts\jQuery-Custom\jquery-activity-navigation.js" />
     <Content Include="Scripts\jQuery-Custom\NewsFeed.js" />

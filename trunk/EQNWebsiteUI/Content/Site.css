@@ -28,6 +28,7 @@ body, header, footer, .root-content {
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: white;
     background-color: black;
+    min-width: 1221px;
 }
 body {
     padding: 20px 50px;
@@ -36,7 +37,6 @@ body {
 header {
     z-index: 100;
     min-height: 124px;
-    margin-bottom: 15px;
 }
 footer {
     z-index: 100;
@@ -89,15 +89,19 @@ footer {
     position:relative;
     clear:both;
     overflow: hidden;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
 }
 
     .menu-list .menuitem {
         float: left;
         display: inline-block;
         border: 2px solid #B835FF;
-        border-radius: 3px;
         padding: 5px;
         background-color: #7F00FF;
+        text-align:center;
+        border-collapse: collapse;
     }
 
         .menu-list .menuitem a {
@@ -106,6 +110,9 @@ footer {
             font-size: 12px;
         }
 
+.toplevel-MenuList {
+    
+}
 
 /* Root Content */
 /*-----------------------------------------------------------------------------------------------------------------------------*/
@@ -138,13 +145,12 @@ footer {
 .NewsFeedWrapper {
     position: relative;
     width: 30%;
-    float:left;
-    height:100%;
+    float: left;
+    height: 100%;
     border: 2px solid #B835FF;
-    border-radius: 3px;
     padding: 5px;
     background-color: #7F00FF;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .NewsFeed a {
@@ -161,7 +167,7 @@ footer {
     height:100%;
     width: 70%;
     overflow:hidden;
-
+    border: 2px solid #B835FF;
 }
 /* widgets  */
 /*************************************************************************************************************************************/

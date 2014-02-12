@@ -15,12 +15,31 @@
     .jdWidget-titlebar-handle {
         display:none;
     }
+    .headerImage {
+        width:100%;
+    }
 </style>
 <div class="header-wrapper">
-    @*here is where the logo goes for our webpage.*@
-    <ul style="height: 75px; width: 75px;">
+    <ul style="height: 75px; display:inline-block; float:left">
         @Html.Partial("Widgets/Login", ViewData)
     </ul>
-    @Html.Action("MainMenu", "Base")
 
+    <div style="float:left; overflow:hidden; position:relative; display:inline-block; width: 50%;">
+        <img class="headerImage" src="~/Images/Header2.png" />
+
+    </div>
+    @Html.Action("MainMenu", "Base")
+    
+    <script>
+        function menuResize() {
+            var menu = $('.menu-list').first();
+            var menuItems = menu.find('.menuitem');
+            var itemWidth = (1 / menuItems.length) * 100;
+            menuItems.css({ width: itemWidth + '%' });
+        }
+
+        $(function () {
+            menuResize();
+        });
+    </script>
 </div>

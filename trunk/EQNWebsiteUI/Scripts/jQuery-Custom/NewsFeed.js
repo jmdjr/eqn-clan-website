@@ -24,7 +24,7 @@
 
     /*--- 0.3. initial Cache                                  ----------------------*/
     // enables access to these properties through the data of the context.
-    var access = function () {
+    var access = new function () {
         this.defaults = function (context, defaults) {
             if (defaults !== undefined) { $(context).data("defaults", defaults); }
             return $(context).data("defaults");
@@ -37,7 +37,7 @@
 
         this.getState = function (context)
         {
-            return new { _d: defaults(context), _c: cache(context) };
+            return { _d: this.defaults(context), _c: this.cache(context) };
         }
     }();
 
@@ -60,6 +60,8 @@
                 var definedDefaults = $.extend(true, {}, initialDefaults, options);
                 var definedCache = $.extend({}, initialCache);
                 access.defaults(context, definedDefaults); access.cache(context, definedCache);
+
+                methods.LoadFeed($(this));
             });
         },
 

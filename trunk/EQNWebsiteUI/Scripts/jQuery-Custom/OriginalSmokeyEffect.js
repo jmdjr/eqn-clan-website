@@ -49,8 +49,8 @@ var targetFPS = 33;
 var imageObj = new Image();
 
 var mousePos = null;
-var clearWidth = 900;
-var clearHeight = 900;
+var clearWidth = 0;
+var clearHeight = 0;
 var clearFactor = 3;
 
 // Once the image has been downloaded then set the image on all of the particles
