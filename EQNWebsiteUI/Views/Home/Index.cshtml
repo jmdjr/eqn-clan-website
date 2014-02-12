@@ -40,35 +40,23 @@
 </div>
 
 @*<div class="gridster">
-<ul class="widget-area">
-    @if (Widgets != null)
-    {
-        foreach (WidgetModel widget in Widgets)
+    <ul class="widget-area">
+        @if (Widgets != null)
         {
-            ViewData["Widget"] = widget;
-            Html.RenderPartial("Widgets/" + widget.widgetType, ViewData);
+            foreach (WidgetModel widget in Widgets)
+            {
+                ViewData["Widget"] = widget;
+                Html.RenderPartial("Widgets/" + widget.widgetType, ViewData);
+            }
         }
-    }
-</ul>
-    </div>*@
+    </ul>
+</div>*@
 
 @section scripts {
 <script>
     $('#TopLayerCanvas').SmokeyCanvas({
         particleCount: 250
     });
-
-    var partialTemplate = "{{#entries}}<div class='NewsFeedEntry'><a href='{{link}}'>{{title}}</a></div>{{/entries}}";
-
-    var feed = new google.feeds.Feed('https://forums.station.sony.com/everquestnext/index.php?forums/-/index.rss');
-
-    feed.setNumEntries(20); //Google Feed API method
-    feed.load(function (data) {
-        var view = data.feed;
-        // Parse data depending on the specified response format, default is JSON.
-        var output = Mustache.render(partialTemplate, view);
-
-        $('.NewsFeed').empty().append(output);
-    });
+    $('.NewsFeed').NewsFeed();
 </script>
 }
