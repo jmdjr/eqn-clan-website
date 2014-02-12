@@ -59,7 +59,9 @@
     });
 
     var partialTemplate = "{{#entries}}<div class='NewsFeedEntry'><a href='{{link}}'>{{title}}</a></div>{{/entries}}";
+
     var feed = new google.feeds.Feed('https://forums.station.sony.com/everquestnext/index.php?forums/-/index.rss');
+
     feed.setNumEntries(20); //Google Feed API method
     feed.load(function (data) {
         var view = data.feed;

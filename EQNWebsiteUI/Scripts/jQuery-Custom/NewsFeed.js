@@ -2,11 +2,10 @@
 //
 // Created By John Davis Jr
 //
-// This script will enable a tertiary navigation between pre-determined regions of details (structured html) using a fancy navigation scheme which
-// rely on user interactions.  its a fancy navigator!
 // Version 1.0.0
 //
-// Verified to work properly on jQuery 1.9.1.
+// Verified to work properly on jQuery 1.10.2
+// Requires Mustache.js, GoogleJsApi.js
 
 (function ($) {
     /********************************************************************************/
@@ -14,6 +13,9 @@
     /********************************************************************************/
     /*--- 0.1. initial defaults                               ----------------------*/
     var initialDefaults = {
+        feed: 'https://forums.station.sony.com/everquestnext/index.php?forums/-/index.rss',
+        template: "{{#entries}}<div class='NewsFeedEntry'><a href='{{link}}'>{{title}}</a></div>{{/entries}}",
+        feedLimit: 20
     };
 
     /*--- 0.2. initial Cache                                  ----------------------*/
@@ -32,6 +34,11 @@
             if (cache !== undefined) { $(context).data("cache", cache); }
             return $(context).data("cache");
         };
+
+        this.getState = function (context)
+        {
+            return new { _d: defaults(context), _c: cache(context) };
+        }
     }();
 
     /********************************************************************************/
@@ -54,20 +61,38 @@
                 var definedCache = $.extend({}, initialCache);
                 access.defaults(context, definedDefaults); access.cache(context, definedCache);
             });
+        },
+
+        LoadFeed: function (context) {
+            var _o = access.getState(context);
+            var partialTemplate = _o._d.template;
+
+            var feed = new google.feeds.Feed(_o._d.feed);
+
+            feed.setNumEntries(_o._d.feedLimit); //Google Feed API method
+
+            feed.load(function (data) {
+                var view = data.feed;
+
+                // Parse data depending on the specified response format, default is JSON.
+                var output = Mustache.render(partialTemplate, view);
+
+                $(context).empty().append(output);
+            });
         }
     };
 /********************************************************************************/
 /*****    7. Standard jQuery Extension function definition                 ******/
 /********************************************************************************/
 
-$.fn.ActivityNavigation = function (method) {
+$.fn.NewsFeed = function (method) {
     if (methods[method]) {
         return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
     } else if (typeof method === 'object' || !method) {
         return methods.init.apply(this, arguments);
     }
     else {
-        $.error('Method ' + method + ' does not exist on jQuery.AnimateCard');
+        $.error('Method ' + method + ' does not exist on jQuery.NewsFeed');
     }
 };
 })(jQuery);
