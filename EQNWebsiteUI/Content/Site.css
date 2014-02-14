@@ -12,6 +12,18 @@ style, script, title {
     display: none;
 }
 
+table {
+    display:table;
+    border-collapse:collapse;
+}
+tr {
+    display:table-row;    
+}
+td {
+    display:table-cell;
+}
+
+
 html, body {
     width: 100%;
     margin: 0px;

@@ -239,7 +239,11 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\Header2.png" />
+    <Content Include="Images\horizontal.png" />
+    <Content Include="Images\SampleCustomBorder.png" />
+    <Content Include="Images\vertical.png" />
     <Content Include="Images\Smoke10.png" />
+    <Content Include="Scripts\jQuery-Custom\Borderize.js" />
     <Content Include="Scripts\jQuery-Custom\jquery-activity-navigation.js" />
     <Content Include="Scripts\jQuery-Custom\NewsFeed.js" />
     <Content Include="Scripts\jQuery-Custom\OriginalSmokeyEffect.js" />
