@@ -29,7 +29,53 @@
             display: none;
         }
     }
+
+    .borderize-default-table {
+    
+    }
+        .borderize-default-table .borderize-horizontal {
+            background-image: url('/Images/horizontal.png');
+            background-position: 0px 0px;
+            background-repeat:repeat-x;
+            height:5px;
+        }
+        .borderize-default-table .borderize-vertical {
+            background-image: url('/Images/vertical.png');
+            background-position: 0px 0px;
+            background-repeat:repeat-y;
+            height:5px;
+        }
+        .borderize-default-table .borderize-top-left-corner {
+            background-image: url('/Images/SampleCustomBorder.png');
+            background-position: 0px 0px;
+            background-repeat:no-repeat;
+            height:5px;
+            width:5px;
+        }
+        .borderize-default-table .borderize-top-right-corner {
+            background-image: url('/Images/SampleCustomBorder.png');
+            background-position: -5px 0px;
+            background-repeat:no-repeat;
+            height:5px;
+            width:5px;
+        }
+        .borderize-default-table .borderize-bottom-left-corner {
+            background-image: url('/Images/SampleCustomBorder.png');
+            background-position: -10px 0px;
+            background-repeat:no-repeat;
+            height:5px;
+            width:5px;
+        }
+        .borderize-default-table .borderize-bottom-right-corner {
+            background-image: url('/Images/SampleCustomBorder.png');
+            background-position: -15px 0px;
+            background-repeat:no-repeat;
+            height:5px;
+            width:5px;
+        }
 </style>
+
+
 <div class="NewsFeedWrapper">
     <h1>News Feed</h1>
     <div class="NewsFeed"></div>
@@ -55,8 +101,9 @@
 @section scripts {
 <script>
     $('#TopLayerCanvas').SmokeyCanvas({
-        particleCount: 250
+        particleCount: 0
     });
     $('.NewsFeed').NewsFeed();
+    $('.NewsFeedWrapper').Borderize();
 </script>
 }
