@@ -130,7 +130,7 @@ footer {
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 .root-content, .NewsFeedWrapper, .InteractiveDisplayWrapper {
     z-index: 50;
-    min-height: 500px;
+    height: 687px;
 }
 
 .widget-area {
@@ -158,11 +158,12 @@ footer {
     position: relative;
     width: 30%;
     float: left;
-    height: 100%;
+    height: 687px;
     border: 2px solid #B835FF;
     padding: 5px;
     background-color: #7F00FF;
-    overflow: hidden;
+    overflow: auto;
+
 }
 
 .NewsFeed a {

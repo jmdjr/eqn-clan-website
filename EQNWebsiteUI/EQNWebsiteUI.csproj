@@ -214,28 +214,29 @@
     <Content Include="App_Data\SecurityBasicsDb_log.ldf">
       <DependentUpon>SecurityBasicsDb.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\magnificent-popup.css" />
+    <Content Include="Content\Css\magnificent-popup.css" />
+    <Content Include="Content\Css\themes\default.css" />
     <Content Include="Content\Menus\DemoHomePageWidgetLayout.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\Menus\MainMenu.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\themes\base\images\animated-overlay.gif" />
-    <Content Include="Content\themes\base\images\ui-bg_diagonals-thick_15_0b3e6f_40x40.png" />
-    <Content Include="Content\themes\base\images\ui-bg_dots-medium_30_0b58a2_4x4.png" />
-    <Content Include="Content\themes\base\images\ui-bg_dots-small_20_333333_2x2.png" />
-    <Content Include="Content\themes\base\images\ui-bg_dots-small_30_a32d00_2x2.png" />
-    <Content Include="Content\themes\base\images\ui-bg_dots-small_40_00498f_2x2.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_40_292929_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_gloss-wave_20_111111_500x100.png" />
-    <Content Include="Content\themes\base\images\ui-icons_00498f_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_98d2fb_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_9ccdfc_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Content\themes\base\jquery-ui-1.10.4.css" />
-    <Content Include="Content\themes\base\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Content\Css\base\images\animated-overlay.gif" />
+    <Content Include="Content\Css\base\images\ui-bg_diagonals-thick_15_0b3e6f_40x40.png" />
+    <Content Include="Content\Css\base\images\ui-bg_dots-medium_30_0b58a2_4x4.png" />
+    <Content Include="Content\Css\base\images\ui-bg_dots-small_20_333333_2x2.png" />
+    <Content Include="Content\Css\base\images\ui-bg_dots-small_30_a32d00_2x2.png" />
+    <Content Include="Content\Css\base\images\ui-bg_dots-small_40_00498f_2x2.png" />
+    <Content Include="Content\Css\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\Css\base\images\ui-bg_flat_40_292929_40x100.png" />
+    <Content Include="Content\Css\base\images\ui-bg_gloss-wave_20_111111_500x100.png" />
+    <Content Include="Content\Css\base\images\ui-icons_00498f_256x240.png" />
+    <Content Include="Content\Css\base\images\ui-icons_98d2fb_256x240.png" />
+    <Content Include="Content\Css\base\images\ui-icons_9ccdfc_256x240.png" />
+    <Content Include="Content\Css\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\Css\base\jquery-ui-1.10.4.css" />
+    <Content Include="Content\Css\base\jquery-ui-1.10.4.custom.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\Header2.png" />
@@ -257,11 +258,11 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
-    <Content Include="Content\themes\jquery.gridster.css" />
+    <Content Include="Content\Css\jquery.gridster.css" />
     <Content Include="Scripts\jquery-magnificent-popup.js" />
     <Content Include="Scripts\jquery.colorbox.js" />
     <Content Include="Scripts\jquery.gridster.js" />
-    <Content Include="Content\themes\jquery.gridster.min.css" />
+    <Content Include="Content\Css\jquery.gridster.min.css" />
     <Content Include="Scripts\jquery.gridster.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -282,7 +283,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Css\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
@@ -320,7 +321,7 @@
     <Content Include="Views\Home\Charter.cshtml" />
     <Content Include="Views\Home\Roster.cshtml" />
     <Content Include="Views\Home\Heirarchy.cshtml" />
-    <Content Include="Views\Home\CodeIfConduct.cshtml" />
+    <Content Include="Views\Home\CodeOfConduct.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
   </ItemGroup>
   <ItemGroup />

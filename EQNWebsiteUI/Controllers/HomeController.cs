@@ -18,7 +18,7 @@ namespace EQNWebsiteUI.Controllers
             return PartialView();
         }
 
-        public ActionResult CodeIfConduct()
+        public ActionResult CodeOfConduct()
         {
             return PartialView();
         }
