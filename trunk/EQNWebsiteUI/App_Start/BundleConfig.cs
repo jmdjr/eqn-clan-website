@@ -35,9 +35,10 @@ namespace EQNWebsiteUI
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/themes/base/jquery-ui-1.10.4.custom.css",
-                "~/Content/magnificent-popup.css",
-                "~/Content/site.css"));
+                "~/Content/Css/base/jquery-ui-1.10.4.custom.css",
+                "~/Content/Css/magnificent-popup.css",
+                "~/Content/Css/site.css",
+                "~/Content/Css/themes/default.css"));
         }
     }
 }
