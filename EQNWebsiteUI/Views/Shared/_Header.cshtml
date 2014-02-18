@@ -5,31 +5,57 @@
 
 <style>
     .jdWidget-wrapper {
-        position:relative;
-        height:100px;
+        position: relative;
+        height: 100px;
         width: 100px;
     }
+
     .jdWidget-content > div {
         padding: 0px;
     }
+
     .jdWidget-titlebar-handle {
-        display:none;
+        display: none;
     }
+
     .headerImage {
-        width:100%;
+        width: 100%;
+    }
+
+    .header-display {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header-sideDisplay {
+        width: 25%;
+        height: 100px;
+        background-color: #7F00FF;
+        border: 2px solid #B835FF;
+        text-align: center;
+        border-collapse: collapse;
+        float: left;
     }
 </style>
 <div class="header-wrapper">
-    <ul style="height: 75px; display:inline-block; float:left">
-        @Html.Partial("Widgets/Login", ViewData)
-    </ul>
+    <div class="header-display">
+        <div class="header-sideDisplay">
+            <ul>
+                @Html.Partial("Widgets/Login", ViewData)
+            </ul>
+        </div>
+        <div style="float: left; overflow: hidden; position: relative; display: inline-block; width: 50%;">
+            <img class="headerImage" src="~/Images/Header2.png" />
 
-    <div style="float:left; overflow:hidden; position:relative; display:inline-block; width: 50%;">
-        <img class="headerImage" src="~/Images/Header2.png" />
+        </div>
+
+         <div class="header-sideDisplay countdownclock">
+            Count Down Clocky
+        </div>
 
     </div>
     @Html.Action("MainMenu", "Base")
-    
+
     <script>
         function menuResize() {
             var menu = $('.menu-list').first();
