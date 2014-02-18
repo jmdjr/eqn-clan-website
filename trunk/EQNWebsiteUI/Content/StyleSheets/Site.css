@@ -70,7 +70,6 @@ footer {
 
 .header-wrapper {
     position: relative;
-    padding-top: 20px;
 }
 
 .false-header {
@@ -108,12 +107,12 @@ footer {
 
     .menu-list .menuitem {
         float: left;
-        display: inline-block;
-        border: 2px solid #B835FF;
-        padding: 5px;
-        background-color: #7F00FF;
-        text-align:center;
-        border-collapse: collapse;
+            display: inline-block;
+            border: 2px solid #B835FF;
+            padding: 5px;
+            background-color: #7F00FF;
+            text-align:center;
+            border-collapse: collapse;
     }
 
         .menu-list .menuitem a {
@@ -182,6 +181,11 @@ footer {
     overflow:hidden;
     border: 2px solid #B835FF;
 }
+.pageContent {
+    height: 630px;
+    overflow: auto;
+
+}
 /* widgets  */
 /*************************************************************************************************************************************/
 .jdWidget-wrapper {
@@ -215,6 +219,10 @@ footer {
     }
 
 .registerloginlink {
+}
+
+.login-start {
+
 }
 
 /* footer style   */

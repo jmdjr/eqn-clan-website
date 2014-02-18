@@ -12,11 +12,6 @@
     {
         opacity: .5;
     }
-
-    .NewsFeed {
-        overflow-y: scroll;
-        height: 426px;
-    }
     .NewsFeedEntry {
         margin-bottom: 20px;
         padding-bottom: 5px;
@@ -34,7 +29,7 @@
 
 <div class="NewsFeedWrapper">
     <h1>News Feed</h1>
-    <div class="NewsFeed"></div>
+    <div class="NewsFeed pageContent"></div>
 </div>
 
 <div class="InteractiveDisplayWrapper">
@@ -57,7 +52,7 @@
 @section scripts {
 <script>
     $('#TopLayerCanvas').SmokeyCanvas({
-        particleCount: 0
+        particleCount: 250
     });
     $('.NewsFeed').NewsFeed();
     //$('.NewsFeedWrapper').Borderize();
