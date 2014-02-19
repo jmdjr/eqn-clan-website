@@ -12,18 +12,18 @@ namespace EQNWebsiteUI.Controllers
 {
     public class BaseController : Controller
     {
-        public PartialViewResult MainMenu() {
-
-            FileStream stream = new FileStream(Server.MapPath("/Content/Menus/MainMenu.xml"), FileMode.Open);
+        private T StreamXML<T>(string xmlUrl)
+        {
+            FileStream stream = new FileStream(Server.MapPath(xmlUrl), FileMode.Open);
             XmlReader reader = new XmlTextReader(stream);
-            XmlSerializer serial = new XmlSerializer(typeof(MenuModel));
-            MenuModel menu = null;
+            XmlSerializer serial = new XmlSerializer(typeof(T));
+            T Model = default(T);
 
             try
             {
                 if (serial.CanDeserialize(reader))
                 {
-                    menu = (MenuModel)serial.Deserialize(reader);
+                    Model = (T)serial.Deserialize(reader);
                 }
             }
             catch (Exception)
@@ -35,37 +35,26 @@ namespace EQNWebsiteUI.Controllers
                 reader.Close();
             }
 
-            ViewData["Menu"] = menu;
+            return Model;
+        }
 
+        public PartialViewResult MainMenu() 
+        {
+
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewData["Menu"] = StreamXML<MenuModel>("/Content/Menus/RegisteredUserMenu.xml");
+            }
+            else
+            {
+                ViewData["Menu"] = StreamXML<MenuModel>("/Content/Menus/AnonymousUserMenu.xml");
+            }
             return PartialView("_MainMenu");
         }
 
         public void GetWidgets()
         {
-            FileStream stream = new FileStream(Server.MapPath("/Content/Menus/DemoHomePageWidgetLayout.xml"), FileMode.Open);
-            XmlReader reader = new XmlTextReader(stream);
-            XmlSerializer serial = new XmlSerializer(typeof(WidgetsCollection));
-            WidgetsCollection widgets = null;
-
-            try
-            {
-                if (serial.CanDeserialize(reader))
-                {
-                    widgets = (WidgetsCollection)serial.Deserialize(reader);
-                }
-            }
-            catch (Exception)
-            {
-
-            }
-            finally
-            {
-                reader.Close();
-            }
-
-            ViewData["Widgets"] = widgets.widgets;
-            reader.Close();
-
+            ViewData["Widgets"] = StreamXML<WidgetsCollection>("/Content/Menus/DemoHomePageWidgetLayout.xml").widgets;
         }
     }
 }

@@ -25,13 +25,13 @@ namespace EQNWebsiteUI.Models.EQNDB
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<User> Users { get; set; }
-        public DbSet<Image> Images { get; set; }
-        public DbSet<Article> Articles { get; set; }
         public DbSet<ArticleImage> ArticleImages { get; set; }
-        public DbSet<Widget> Widgets { get; set; }
-        public DbSet<WidgetType> WidgetTypes { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<UserWidget> UserWidgets { get; set; }
+        public DbSet<Widget> Widgets { get; set; }
         public DbSet<WidgetSetting> WidgetSettings { get; set; }
+        public DbSet<WidgetType> WidgetTypes { get; set; }
     }
 }

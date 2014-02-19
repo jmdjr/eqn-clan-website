@@ -1,10 +1,10 @@
 ﻿@model EQNWebsiteUI.Models.RegisterModel
 
-<div id="registerForm" class="AjaxFormWrapper">
-@using (Html.BeginForm()) {
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "registerForm" }))
+{
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
     <div style="height:44px;"></div>
+<div id="registerForm" class="AjaxFormWrapper">
     <fieldset>
         <legend>Register</legend>
         <ol>
@@ -23,5 +23,18 @@
         </ol>
         <input type="submit" value="Register" />
     </fieldset>
-}
     </div>
+    @Html.ValidationSummary()
+}
+
+<script>
+    $('#registerForm > form').submit(function (e) {
+        var postData = $(this).serializeArray();
+        $.post('/Account/Register',
+            postData,
+            function (data) {
+                $("#loginForm").empty().append(data);
+            });
+        e.preventDefault();
+    });
+</script>

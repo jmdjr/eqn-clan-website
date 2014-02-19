@@ -25,7 +25,7 @@ namespace EQNWebsiteUI.Models.EQNDB
         public byte[] Binary { get; set; }
         public int UserId { get; set; }
     
-        public virtual User CreatedBy { get; set; }
         public virtual ICollection<ArticleImage> ArticleImages { get; set; }
+        public virtual User User { get; set; }
     }
 }

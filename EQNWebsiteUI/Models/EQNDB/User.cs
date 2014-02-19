@@ -16,14 +16,14 @@ namespace EQNWebsiteUI.Models.EQNDB
     {
         public User()
         {
-            this.UserWidgets = new HashSet<UserWidget>();
             this.Images = new HashSet<Image>();
+            this.UserWidgets = new HashSet<UserWidget>();
         }
     
         public int UserId { get; set; }
         public string UserName { get; set; }
     
-        public virtual ICollection<UserWidget> UserWidgets { get; set; }
         public virtual ICollection<Image> Images { get; set; }
+        public virtual ICollection<UserWidget> UserWidgets { get; set; }
     }
 }

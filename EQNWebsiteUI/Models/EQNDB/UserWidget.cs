@@ -24,7 +24,7 @@ namespace EQNWebsiteUI.Models.EQNDB
         public int WidgetId { get; set; }
     
         public virtual User User { get; set; }
-        public virtual Widget Widget { get; set; }
         public virtual ICollection<WidgetSetting> WidgetSettings { get; set; }
+        public virtual Widget Widget { get; set; }
     }
 }

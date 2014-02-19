@@ -204,6 +204,45 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\EQNDB\Article.cs">
+      <DependentUpon>EQNDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQNDB\ArticleImage.cs">
+      <DependentUpon>EQNDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQNDB\EQNDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EQNDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQNDB\EQNDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EQNDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQNDB\EQNDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EQNDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQNDB\Image.cs">
+      <DependentUpon>EQNDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQNDB\User.cs">
+      <DependentUpon>EQNDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQNDB\UserWidget.cs">
+      <DependentUpon>EQNDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQNDB\Widget.cs">
+      <DependentUpon>EQNDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQNDB\WidgetSetting.cs">
+      <DependentUpon>EQNDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQNDB\WidgetType.cs">
+      <DependentUpon>EQNDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SecurityBasicsContext.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\WidgetModel.cs" />
@@ -216,10 +255,13 @@
     </Content>
     <Content Include="Content\StyleSheets\magnificent-popup.css" />
     <Content Include="Content\StyleSheets\themes\default.css" />
+    <Content Include="Content\Menus\AnonymousUserMenu.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\Menus\DemoHomePageWidgetLayout.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\Menus\MainMenu.xml">
+    <Content Include="Content\Menus\RegisteredUserMenu.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\StyleSheets\base\images\animated-overlay.gif" />
@@ -253,6 +295,23 @@
     <Content Include="Scripts\jquery-ui-menubar.js" />
     <Content Include="Scripts\jQuery-Custom\initialize.js" />
     <Content Include="Scripts\jQuery-Custom\jQuery.DisplayWidget.js" />
+    <EntityDeploy Include="Models\EQNDB\EQNDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EQNDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EQNDB\EQNDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EQNDBModel.edmx</DependentUpon>
+      <LastGenOutput>EQNDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EQNDB\EQNDBModel.edmx.diagram">
+      <DependentUpon>EQNDBModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\EQNDB\EQNDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EQNDBModel.edmx</DependentUpon>
+      <LastGenOutput>EQNDBModel.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\Standard.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -325,9 +384,7 @@
     <Content Include="Views\Home\CodeOfConduct.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\EQNDB\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

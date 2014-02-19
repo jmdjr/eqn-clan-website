@@ -9,7 +9,7 @@ using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using EQNWebsiteUI.Models;
-// using EQNWebsiteUI.Models.EQNDB;
+using EQNWebsiteUI.Models.EQNDB;
 
 namespace EQNWebsiteUI.Controllers
 {
@@ -34,9 +34,21 @@ namespace EQNWebsiteUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie : model.RememberMe))
+            if (ModelState.IsValid)
             {
-                return null;
+                try
+                {
+                    if (WebSecurity.Login(model.UserName, model.Password, persistCookie : model.RememberMe))
+                    {
+                        return JavaScript("location.reload()");
+                    }
+                }
+                catch (Exception)
+                {
+                    // If we got this far, something failed, redisplay form
+                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    return PartialView(model);
+                }
             }
 
             // If we got this far, something failed, redisplay form
@@ -48,12 +60,10 @@ namespace EQNWebsiteUI.Controllers
         // POST: /Account/LogOff
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
-
-            return null;
+            return JavaScript("location.reload()");
         }
 
         //
@@ -79,8 +89,13 @@ namespace EQNWebsiteUI.Controllers
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+
+                    using (EQNDBModelEntities context = new EQNDBModelEntities())
+                    {
+                    }
+
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    return JavaScript("location.reload()");
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -90,7 +105,7 @@ namespace EQNWebsiteUI.Controllers
 
             // If we got this far, something failed, redisplay form
             //return View(model);
-            return null;
+            return PartialView(model);
         }
 
         //
