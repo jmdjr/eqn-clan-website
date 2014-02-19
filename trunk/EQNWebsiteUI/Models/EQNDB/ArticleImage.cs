@@ -18,7 +18,7 @@ namespace EQNWebsiteUI.Models.EQNDB
         public int ArticleId { get; set; }
         public int ImageId { get; set; }
     
-        public virtual Image Image { get; set; }
         public virtual Article Article { get; set; }
+        public virtual Image Image { get; set; }
     }
 }

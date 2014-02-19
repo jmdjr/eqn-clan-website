@@ -5,15 +5,26 @@ function GetPartialView(partialViewURL, passingArguments, intoElement)
     if (partialViewURL != "" && partialViewURL != "#") {
         $.get(partialViewURL, passingArguments,
             function (result) {
-                if (result == null || "") { return; }
+                if (result == null || "" || intoElement == null) { return; }
 
                 $(intoElement).empty().append(result);
             }
         );
     }
-
-
 }
+
+function PostPartialView(partialViewURL, passingArguments, intoElement) {
+    if (partialViewURL != "" && partialViewURL != "#") {
+        $.post(partialViewURL, passingArguments,
+            function (result) {
+                if (result == null || "" || intoElement == null) { return; }
+                $(intoElement).empty().append(result);
+            }
+        );
+    }
+}
+
+
 
 $(function () {
         gridster = $('.widget-area').gridster({

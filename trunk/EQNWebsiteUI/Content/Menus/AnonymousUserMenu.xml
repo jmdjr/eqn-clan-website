@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu>
+  <items>
+    <item text="About Us" href="/Home/AboutUs" />
+    <item text="Code of Conduct" href="/Home/CodeOfConduct"/>
+    <item text="Charter" href="/Home/Charter" />
+    <item text="Gallery" href="/Home/Gallery" />
+    <item text="Contact Us" href="/Home/ContactUs" />
+  </items>
+</menu>

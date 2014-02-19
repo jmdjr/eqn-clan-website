@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu>
+  <items>
+    <item text="About Us" href="/Home/AboutUs" />
+    <item text="Code of Conduct" href="/Home/CodeOfConduct"/>
+    <item text="Heirarchy" href="/Home/Heirarchy"/>
+    <item text="Roster" href="/Home/Roster" />
+    <item text="Charter" href="/Home/Charter" />
+    <item text="Wiki" href="/Home/Wiki" />
+    <item text="Guild Archives" href="/Home/GuildArchives" />
+    <item text="Events" href="/Home/Events" />
+    <item text="Crafters" href="/Home/Crafters" />
+    <item text="Gallery" href="/Home/Gallery" />
+    <item text="Contact Us" href="/Home/ContactUs" />
+  </items>
+</menu>

@@ -17,7 +17,7 @@ namespace EQNWebsiteUI
     {
         protected void Application_Start()
         {
-            //WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables : true);
             AreaRegistration.RegisterAllAreas();
 
             

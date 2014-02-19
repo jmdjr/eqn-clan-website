@@ -77,6 +77,12 @@ footer {
     color: white;
 }
 
+.logoff-button {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
 /* Main Menu*/
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 .ui-menubar .ui-menubar-item {

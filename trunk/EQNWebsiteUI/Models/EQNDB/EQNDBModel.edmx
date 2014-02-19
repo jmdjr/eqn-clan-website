@@ -4,225 +4,407 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EQNDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="EQNDBModelStoreContainer">
-          <EntitySet Name="UserProfiles" EntityType="EQNDBModel.Store.UserProfiles" store:Type="Tables" Schema="dbo" />
+      <Schema Namespace="EQNDBModelModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="EQNDBModelModelStoreContainer">
+          <EntitySet Name="ArticleImages" EntityType="EQNDBModelModel.Store.ArticleImages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Articles" EntityType="EQNDBModelModel.Store.Articles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Images" EntityType="EQNDBModelModel.Store.Images" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="EQNDBModelModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserWidgets" EntityType="EQNDBModelModel.Store.UserWidgets" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Widgets" EntityType="EQNDBModelModel.Store.Widgets" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WidgetSettings" EntityType="EQNDBModelModel.Store.WidgetSettings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WidgetTypes" EntityType="EQNDBModelModel.Store.WidgetTypes" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ArticleArticleImage" Association="EQNDBModelModel.Store.FK_ArticleArticleImage">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="ArticleImages" EntitySet="ArticleImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImageArticleImage" Association="EQNDBModelModel.Store.FK_ImageArticleImage">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="ArticleImages" EntitySet="ArticleImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImageUser" Association="EQNDBModelModel.Store.FK_ImageUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserWidgetUser" Association="EQNDBModelModel.Store.FK_UserWidgetUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserWidgets" EntitySet="UserWidgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WidgetSettingUserWidget" Association="EQNDBModelModel.Store.FK_WidgetSettingUserWidget">
+            <End Role="UserWidgets" EntitySet="UserWidgets" />
+            <End Role="WidgetSettings" EntitySet="WidgetSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WidgetTypeWidget" Association="EQNDBModelModel.Store.FK_WidgetTypeWidget">
+            <End Role="WidgetTypes" EntitySet="WidgetTypes" />
+            <End Role="Widgets" EntitySet="Widgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WidgetUserWidget" Association="EQNDBModelModel.Store.FK_WidgetUserWidget">
+            <End Role="Widgets" EntitySet="Widgets" />
+            <End Role="UserWidgets" EntitySet="UserWidgets" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="UserProfiles">
+        <EntityType Name="ArticleImages">
+          <Key>
+            <PropertyRef Name="ArticleImageId" />
+          </Key>
+          <Property Name="ArticleImageId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="ImageId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Articles">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="ArticleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="PublishedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImageLocation" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Binary" Type="varbinary(max)" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="UserWidgets">
+          <Key>
+            <PropertyRef Name="UserWidgetId" />
+          </Key>
+          <Property Name="UserWidgetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="WidgetId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Widgets">
+          <Key>
+            <PropertyRef Name="WidgetId" />
+          </Key>
+          <Property Name="WidgetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WidgetTypeId" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="WidgetTypeWidgetTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WidgetSettings">
+          <Key>
+            <PropertyRef Name="WidgetSettingId" />
+          </Key>
+          <Property Name="WidgetSettingId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserWidgetId" Type="int" Nullable="false" />
+          <Property Name="SettingName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SettingValue" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WidgetTypes">
+          <Key>
+            <PropertyRef Name="WidgetTypeId" />
+          </Key>
+          <Property Name="WidgetTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WidgetTypeName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WidgetTooltip" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WidgetDescription" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ArticleArticleImage">
+          <End Role="Articles" Type="EQNDBModelModel.Store.Articles" Multiplicity="1" />
+          <End Role="ArticleImages" Type="EQNDBModelModel.Store.ArticleImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="ArticleImages">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImageArticleImage">
+          <End Role="Images" Type="EQNDBModelModel.Store.Images" Multiplicity="1" />
+          <End Role="ArticleImages" Type="EQNDBModelModel.Store.ArticleImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="ImageId" />
+            </Principal>
+            <Dependent Role="ArticleImages">
+              <PropertyRef Name="ImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImageUser">
+          <End Role="Users" Type="EQNDBModelModel.Store.Users" Multiplicity="1" />
+          <End Role="Images" Type="EQNDBModelModel.Store.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserWidgetUser">
+          <End Role="Users" Type="EQNDBModelModel.Store.Users" Multiplicity="1" />
+          <End Role="UserWidgets" Type="EQNDBModelModel.Store.UserWidgets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserWidgets">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WidgetSettingUserWidget">
+          <End Role="UserWidgets" Type="EQNDBModelModel.Store.UserWidgets" Multiplicity="1" />
+          <End Role="WidgetSettings" Type="EQNDBModelModel.Store.WidgetSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserWidgets">
+              <PropertyRef Name="UserWidgetId" />
+            </Principal>
+            <Dependent Role="WidgetSettings">
+              <PropertyRef Name="UserWidgetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WidgetTypeWidget">
+          <End Role="WidgetTypes" Type="EQNDBModelModel.Store.WidgetTypes" Multiplicity="1" />
+          <End Role="Widgets" Type="EQNDBModelModel.Store.Widgets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WidgetTypes">
+              <PropertyRef Name="WidgetTypeId" />
+            </Principal>
+            <Dependent Role="Widgets">
+              <PropertyRef Name="WidgetTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WidgetUserWidget">
+          <End Role="Widgets" Type="EQNDBModelModel.Store.Widgets" Multiplicity="1" />
+          <End Role="UserWidgets" Type="EQNDBModelModel.Store.UserWidgets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Widgets">
+              <PropertyRef Name="WidgetId" />
+            </Principal>
+            <Dependent Role="UserWidgets">
+              <PropertyRef Name="WidgetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EQNDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="EQNDBModelModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="EQNDBModelEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Users" EntityType="EQNDBModel.User" />
-          <EntitySet Name="Images" EntityType="EQNDBModel.Image" />
-          <EntitySet Name="Articles" EntityType="EQNDBModel.Article" />
-          <EntitySet Name="ArticleImages" EntityType="EQNDBModel.ArticleImage" />
-          <EntitySet Name="Widgets" EntityType="EQNDBModel.Widget" />
-          <EntitySet Name="WidgetTypes" EntityType="EQNDBModel.WidgetType" />
-          <EntitySet Name="UserWidgets" EntityType="EQNDBModel.UserWidget" />
-          <AssociationSet Name="UserWidgetUser" Association="EQNDBModel.UserWidgetUser">
-            <End Role="UserWidget" EntitySet="UserWidgets" />
-            <End Role="User" EntitySet="Users" />
+          <EntitySet Name="ArticleImages" EntityType="EQNDBModelModel.ArticleImage" />
+          <EntitySet Name="Articles" EntityType="EQNDBModelModel.Article" />
+          <EntitySet Name="Images" EntityType="EQNDBModelModel.Image" />
+          <EntitySet Name="Users" EntityType="EQNDBModelModel.User" />
+          <EntitySet Name="UserWidgets" EntityType="EQNDBModelModel.UserWidget" />
+          <EntitySet Name="Widgets" EntityType="EQNDBModelModel.Widget" />
+          <EntitySet Name="WidgetSettings" EntityType="EQNDBModelModel.WidgetSetting" />
+          <EntitySet Name="WidgetTypes" EntityType="EQNDBModelModel.WidgetType" />
+          <AssociationSet Name="FK_ArticleArticleImage" Association="EQNDBModelModel.FK_ArticleArticleImage">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="ArticleImages" EntitySet="ArticleImages" />
           </AssociationSet>
-          <AssociationSet Name="WidgetUserWidget" Association="EQNDBModel.WidgetUserWidget">
-            <End Role="Widget" EntitySet="Widgets" />
-            <End Role="UserWidget" EntitySet="UserWidgets" />
+          <AssociationSet Name="FK_ImageArticleImage" Association="EQNDBModelModel.FK_ImageArticleImage">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="ArticleImages" EntitySet="ArticleImages" />
           </AssociationSet>
-          <EntitySet Name="WidgetSettings" EntityType="EQNDBModel.WidgetSetting" />
-          <AssociationSet Name="WidgetSettingUserWidget" Association="EQNDBModel.WidgetSettingUserWidget">
-            <End Role="WidgetSetting" EntitySet="WidgetSettings" />
-            <End Role="UserWidget" EntitySet="UserWidgets" />
+          <AssociationSet Name="FK_ImageUser" Association="EQNDBModelModel.FK_ImageUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Images" EntitySet="Images" />
           </AssociationSet>
-          <AssociationSet Name="ImageUser" Association="EQNDBModel.ImageUser">
-            <End Role="Image" EntitySet="Images" />
-            <End Role="User" EntitySet="Users" />
+          <AssociationSet Name="FK_UserWidgetUser" Association="EQNDBModelModel.FK_UserWidgetUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserWidgets" EntitySet="UserWidgets" />
           </AssociationSet>
-          <AssociationSet Name="WidgetTypeWidget" Association="EQNDBModel.WidgetTypeWidget">
-            <End Role="WidgetType" EntitySet="WidgetTypes" />
-            <End Role="Widget" EntitySet="Widgets" />
+          <AssociationSet Name="FK_WidgetSettingUserWidget" Association="EQNDBModelModel.FK_WidgetSettingUserWidget">
+            <End Role="UserWidgets" EntitySet="UserWidgets" />
+            <End Role="WidgetSettings" EntitySet="WidgetSettings" />
           </AssociationSet>
-          <AssociationSet Name="ImageArticleImage" Association="EQNDBModel.ImageArticleImage">
-            <End Role="Image" EntitySet="Images" />
-            <End Role="ArticleImage" EntitySet="ArticleImages" />
+          <AssociationSet Name="FK_WidgetUserWidget" Association="EQNDBModelModel.FK_WidgetUserWidget">
+            <End Role="Widgets" EntitySet="Widgets" />
+            <End Role="UserWidgets" EntitySet="UserWidgets" />
           </AssociationSet>
-          <AssociationSet Name="ArticleArticleImage" Association="EQNDBModel.ArticleArticleImage">
-            <End Role="Article" EntitySet="Articles" />
-            <End Role="ArticleImage" EntitySet="ArticleImages" />
+          <AssociationSet Name="FK_WidgetTypeWidget" Association="EQNDBModelModel.FK_WidgetTypeWidget">
+            <End Role="WidgetTypes" EntitySet="WidgetTypes" />
+            <End Role="Widgets" EntitySet="Widgets" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ArticleImage">
+          <Key>
+            <PropertyRef Name="ArticleImageId" />
+          </Key>
+          <Property Name="ArticleImageId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleId" Type="Int32" Nullable="false" />
+          <Property Name="ImageId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="EQNDBModelModel.FK_ArticleArticleImage" FromRole="ArticleImages" ToRole="Articles" />
+          <NavigationProperty Name="Image" Relationship="EQNDBModelModel.FK_ImageArticleImage" FromRole="ArticleImages" ToRole="Images" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="ArticleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleText" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PublishedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ArticleImages" Relationship="EQNDBModelModel.FK_ArticleArticleImage" FromRole="Articles" ToRole="ArticleImages" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ImageLocation" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Binary" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ArticleImages" Relationship="EQNDBModelModel.FK_ImageArticleImage" FromRole="Images" ToRole="ArticleImages" />
+          <NavigationProperty Name="User" Relationship="EQNDBModelModel.FK_ImageUser" FromRole="Images" ToRole="Users" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="UserWidgets" Relationship="EQNDBModel.UserWidgetUser" FromRole="User" ToRole="UserWidget" />
-          <NavigationProperty Name="Images" Relationship="EQNDBModel.ImageUser" FromRole="User" ToRole="Image" />
-        </EntityType>
-        <EntityType Name="Image">
-          <Key>
-            <PropertyRef Name="ImageId" />
-          </Key>
-          <Property Type="Int32" Name="ImageId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ImageName" Nullable="false" />
-          <Property Type="String" Name="ImageLocation" Nullable="false" />
-          <Property Type="Binary" Name="Binary" Nullable="false" />
-          <Property Type="Int32" Name="UserId" Nullable="false" />
-          <NavigationProperty Name="CreatedBy" Relationship="EQNDBModel.ImageUser" FromRole="Image" ToRole="User" />
-          <NavigationProperty Name="ArticleImages" Relationship="EQNDBModel.ImageArticleImage" FromRole="Image" ToRole="ArticleImage" />
-        </EntityType>
-        <EntityType Name="Article">
-          <Key>
-            <PropertyRef Name="ArticleId" />
-          </Key>
-          <Property Type="Int32" Name="ArticleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ArticleText" Nullable="false" />
-          <Property Type="Int32" Name="UserId" Nullable="false" />
-          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
-          <Property Type="DateTime" Name="PublishedDate" Nullable="false" />
-          <NavigationProperty Name="ArticleImages" Relationship="EQNDBModel.ArticleArticleImage" FromRole="Article" ToRole="ArticleImage" />
-        </EntityType>
-        <EntityType Name="ArticleImage">
-          <Key>
-            <PropertyRef Name="ArticleImageId" />
-          </Key>
-          <Property Type="Int32" Name="ArticleImageId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="ArticleId" Nullable="false" />
-          <Property Type="Int32" Name="ImageId" Nullable="false" />
-          <NavigationProperty Name="Image" Relationship="EQNDBModel.ImageArticleImage" FromRole="ArticleImage" ToRole="Image" />
-          <NavigationProperty Name="Article" Relationship="EQNDBModel.ArticleArticleImage" FromRole="ArticleImage" ToRole="Article" />
-        </EntityType>
-        <EntityType Name="Widget">
-          <Key>
-            <PropertyRef Name="WidgetId" />
-          </Key>
-          <Property Type="Int32" Name="WidgetId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="WidgetTypeId" Nullable="false" />
-          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
-          <NavigationProperty Name="UserWidgets" Relationship="EQNDBModel.WidgetUserWidget" FromRole="Widget" ToRole="UserWidget" />
-          <Property Type="Int32" Name="WidgetTypeWidgetTypeId" Nullable="false" />
-          <NavigationProperty Name="WidgetType" Relationship="EQNDBModel.WidgetTypeWidget" FromRole="Widget" ToRole="WidgetType" />
-        </EntityType>
-        <EntityType Name="WidgetType">
-          <Key>
-            <PropertyRef Name="WidgetTypeId" />
-          </Key>
-          <Property Type="Int32" Name="WidgetTypeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="WidgetTypeName" Nullable="false" />
-          <Property Type="String" Name="WidgetTooltip" Nullable="false" />
-          <Property Type="String" Name="WidgetDescription" Nullable="false" />
-          <NavigationProperty Name="Widgets" Relationship="EQNDBModel.WidgetTypeWidget" FromRole="WidgetType" ToRole="Widget" />
+          <NavigationProperty Name="Images" Relationship="EQNDBModelModel.FK_ImageUser" FromRole="Users" ToRole="Images" />
+          <NavigationProperty Name="UserWidgets" Relationship="EQNDBModelModel.FK_UserWidgetUser" FromRole="Users" ToRole="UserWidgets" />
         </EntityType>
         <EntityType Name="UserWidget">
           <Key>
             <PropertyRef Name="UserWidgetId" />
           </Key>
-          <Property Type="Int32" Name="UserWidgetId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="UserId" Nullable="false" />
-          <Property Type="Int32" Name="WidgetId" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="EQNDBModel.UserWidgetUser" FromRole="UserWidget" ToRole="User" />
-          <NavigationProperty Name="Widget" Relationship="EQNDBModel.WidgetUserWidget" FromRole="UserWidget" ToRole="Widget" />
-          <NavigationProperty Name="WidgetSettings" Relationship="EQNDBModel.WidgetSettingUserWidget" FromRole="UserWidget" ToRole="WidgetSetting" />
+          <Property Name="UserWidgetId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="WidgetId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="EQNDBModelModel.FK_UserWidgetUser" FromRole="UserWidgets" ToRole="Users" />
+          <NavigationProperty Name="WidgetSettings" Relationship="EQNDBModelModel.FK_WidgetSettingUserWidget" FromRole="UserWidgets" ToRole="WidgetSettings" />
+          <NavigationProperty Name="Widget" Relationship="EQNDBModelModel.FK_WidgetUserWidget" FromRole="UserWidgets" ToRole="Widgets" />
         </EntityType>
-        <Association Name="UserWidgetUser">
-          <End Type="EQNDBModel.UserWidget" Role="UserWidget" Multiplicity="*" />
-          <End Type="EQNDBModel.User" Role="User" Multiplicity="1" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserWidget">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="WidgetUserWidget">
-          <End Type="EQNDBModel.Widget" Role="Widget" Multiplicity="1" />
-          <End Type="EQNDBModel.UserWidget" Role="UserWidget" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Widget">
-              <PropertyRef Name="WidgetId" />
-            </Principal>
-            <Dependent Role="UserWidget">
-              <PropertyRef Name="WidgetId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="Widget">
+          <Key>
+            <PropertyRef Name="WidgetId" />
+          </Key>
+          <Property Name="WidgetId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="WidgetTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="WidgetTypeWidgetTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserWidgets" Relationship="EQNDBModelModel.FK_WidgetUserWidget" FromRole="Widgets" ToRole="UserWidgets" />
+          <NavigationProperty Name="WidgetType" Relationship="EQNDBModelModel.FK_WidgetTypeWidget" FromRole="Widgets" ToRole="WidgetTypes" />
+        </EntityType>
         <EntityType Name="WidgetSetting">
           <Key>
             <PropertyRef Name="WidgetSettingId" />
           </Key>
-          <Property Type="Int32" Name="WidgetSettingId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="UserWidgetId" Nullable="false" />
-          <NavigationProperty Name="UserWidget" Relationship="EQNDBModel.WidgetSettingUserWidget" FromRole="WidgetSetting" ToRole="UserWidget" />
-          <Property Type="String" Name="SettingName" Nullable="false" />
-          <Property Type="String" Name="SettingValue" Nullable="false" />
+          <Property Name="WidgetSettingId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserWidgetId" Type="Int32" Nullable="false" />
+          <Property Name="SettingName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SettingValue" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserWidget" Relationship="EQNDBModelModel.FK_WidgetSettingUserWidget" FromRole="WidgetSettings" ToRole="UserWidgets" />
         </EntityType>
-        <Association Name="WidgetSettingUserWidget">
-          <End Type="EQNDBModel.WidgetSetting" Role="WidgetSetting" Multiplicity="*" />
-          <End Type="EQNDBModel.UserWidget" Role="UserWidget" Multiplicity="1" />
+        <EntityType Name="WidgetType">
+          <Key>
+            <PropertyRef Name="WidgetTypeId" />
+          </Key>
+          <Property Name="WidgetTypeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="WidgetTypeName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="WidgetTooltip" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="WidgetDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Widgets" Relationship="EQNDBModelModel.FK_WidgetTypeWidget" FromRole="WidgetTypes" ToRole="Widgets" />
+        </EntityType>
+        <Association Name="FK_ArticleArticleImage">
+          <End Role="Articles" Type="EQNDBModelModel.Article" Multiplicity="1" />
+          <End Role="ArticleImages" Type="EQNDBModelModel.ArticleImage" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UserWidget">
-              <PropertyRef Name="UserWidgetId" />
+            <Principal Role="Articles">
+              <PropertyRef Name="ArticleId" />
             </Principal>
-            <Dependent Role="WidgetSetting">
-              <PropertyRef Name="UserWidgetId" />
+            <Dependent Role="ArticleImages">
+              <PropertyRef Name="ArticleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ImageUser">
-          <End Type="EQNDBModel.Image" Role="Image" Multiplicity="*" />
-          <End Type="EQNDBModel.User" Role="User" Multiplicity="1" />
+        <Association Name="FK_ImageArticleImage">
+          <End Role="Images" Type="EQNDBModelModel.Image" Multiplicity="1" />
+          <End Role="ArticleImages" Type="EQNDBModelModel.ArticleImage" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Image">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="WidgetTypeWidget">
-          <End Type="EQNDBModel.WidgetType" Role="WidgetType" Multiplicity="1" />
-          <End Type="EQNDBModel.Widget" Role="Widget" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WidgetType">
-              <PropertyRef Name="WidgetTypeId" />
-            </Principal>
-            <Dependent Role="Widget">
-              <PropertyRef Name="WidgetTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ImageArticleImage">
-          <End Type="EQNDBModel.Image" Role="Image" Multiplicity="1" />
-          <End Type="EQNDBModel.ArticleImage" Role="ArticleImage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Image">
+            <Principal Role="Images">
               <PropertyRef Name="ImageId" />
             </Principal>
-            <Dependent Role="ArticleImage">
+            <Dependent Role="ArticleImages">
               <PropertyRef Name="ImageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ArticleArticleImage">
-          <End Type="EQNDBModel.Article" Role="Article" Multiplicity="1" />
-          <End Type="EQNDBModel.ArticleImage" Role="ArticleImage" Multiplicity="*" />
+        <Association Name="FK_ImageUser">
+          <End Role="Users" Type="EQNDBModelModel.User" Multiplicity="1" />
+          <End Role="Images" Type="EQNDBModelModel.Image" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Article">
-              <PropertyRef Name="ArticleId" />
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="ArticleImage">
-              <PropertyRef Name="ArticleId" />
+            <Dependent Role="Images">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserWidgetUser">
+          <End Role="Users" Type="EQNDBModelModel.User" Multiplicity="1" />
+          <End Role="UserWidgets" Type="EQNDBModelModel.UserWidget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserWidgets">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WidgetSettingUserWidget">
+          <End Role="UserWidgets" Type="EQNDBModelModel.UserWidget" Multiplicity="1" />
+          <End Role="WidgetSettings" Type="EQNDBModelModel.WidgetSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserWidgets">
+              <PropertyRef Name="UserWidgetId" />
+            </Principal>
+            <Dependent Role="WidgetSettings">
+              <PropertyRef Name="UserWidgetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WidgetUserWidget">
+          <End Role="Widgets" Type="EQNDBModelModel.Widget" Multiplicity="1" />
+          <End Role="UserWidgets" Type="EQNDBModelModel.UserWidget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Widgets">
+              <PropertyRef Name="WidgetId" />
+            </Principal>
+            <Dependent Role="UserWidgets">
+              <PropertyRef Name="WidgetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WidgetTypeWidget">
+          <End Role="WidgetTypes" Type="EQNDBModelModel.WidgetType" Multiplicity="1" />
+          <End Role="Widgets" Type="EQNDBModelModel.Widget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WidgetTypes">
+              <PropertyRef Name="WidgetTypeId" />
+            </Principal>
+            <Dependent Role="Widgets">
+              <PropertyRef Name="WidgetTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -231,12 +413,82 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EQNDBModelStoreContainer" CdmEntityContainer="EQNDBModelEntities">
+        <EntityContainerMapping StorageEntityContainer="EQNDBModelModelStoreContainer" CdmEntityContainer="EQNDBModelEntities">
+          <EntitySetMapping Name="ArticleImages">
+            <EntityTypeMapping TypeName="EQNDBModelModel.ArticleImage">
+              <MappingFragment StoreEntitySet="ArticleImages">
+                <ScalarProperty Name="ArticleImageId" ColumnName="ArticleImageId" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="EQNDBModelModel.Article">
+              <MappingFragment StoreEntitySet="Articles">
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="ArticleText" ColumnName="ArticleText" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="EQNDBModelModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ImageLocation" ColumnName="ImageLocation" />
+                <ScalarProperty Name="Binary" ColumnName="Binary" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="EQNDBModel.User">
-              <MappingFragment StoreEntitySet="UserProfiles">
+            <EntityTypeMapping TypeName="EQNDBModelModel.User">
+              <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserWidgets">
+            <EntityTypeMapping TypeName="EQNDBModelModel.UserWidget">
+              <MappingFragment StoreEntitySet="UserWidgets">
+                <ScalarProperty Name="UserWidgetId" ColumnName="UserWidgetId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="WidgetId" ColumnName="WidgetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Widgets">
+            <EntityTypeMapping TypeName="EQNDBModelModel.Widget">
+              <MappingFragment StoreEntitySet="Widgets">
+                <ScalarProperty Name="WidgetId" ColumnName="WidgetId" />
+                <ScalarProperty Name="WidgetTypeId" ColumnName="WidgetTypeId" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="WidgetTypeWidgetTypeId" ColumnName="WidgetTypeWidgetTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WidgetSettings">
+            <EntityTypeMapping TypeName="EQNDBModelModel.WidgetSetting">
+              <MappingFragment StoreEntitySet="WidgetSettings">
+                <ScalarProperty Name="WidgetSettingId" ColumnName="WidgetSettingId" />
+                <ScalarProperty Name="UserWidgetId" ColumnName="UserWidgetId" />
+                <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+                <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WidgetTypes">
+            <EntityTypeMapping TypeName="EQNDBModelModel.WidgetType">
+              <MappingFragment StoreEntitySet="WidgetTypes">
+                <ScalarProperty Name="WidgetTypeId" ColumnName="WidgetTypeId" />
+                <ScalarProperty Name="WidgetTypeName" ColumnName="WidgetTypeName" />
+                <ScalarProperty Name="WidgetTooltip" ColumnName="WidgetTooltip" />
+                <ScalarProperty Name="WidgetDescription" ColumnName="WidgetDescription" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
