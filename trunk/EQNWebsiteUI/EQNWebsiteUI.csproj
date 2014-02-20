@@ -284,6 +284,7 @@
     <Content Include="Content\StyleSheets\base\jquery-ui-1.10.4.custom.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\013_greyed_out.png" />
     <Content Include="Images\Header2.png" />
     <Content Include="Images\horizontal.png" />
     <Content Include="Images\SampleCustomBorder.png" />
