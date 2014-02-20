@@ -17,7 +17,7 @@ namespace EQNWebsiteUI.Controllers
             // if the user is not logged in, present an alternate page stating something like they should register to take advantage of
             //   the customizeable user page, when those are done.
 
-            GetWidgets();
+            GetDemoWidgets();
             return View();
         }
 

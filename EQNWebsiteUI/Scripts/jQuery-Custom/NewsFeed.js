@@ -69,20 +69,38 @@
             var _o = access.getState(context);
             var partialTemplate = _o._d.template;
 
-            var feed = new google.feeds.Feed(_o._d.feed);
 
-            feed.setNumEntries(_o._d.feedLimit); //Google Feed API method
+            $.get('/Base/CacheJSON', { key: 'defaultNewsFeed', JSONData: {} }, function (Data) {
 
-            feed.load(function (data) {
-                var view = data.feed;
+                if (Data.view === undefined) {
 
-                // Parse data depending on the specified response format, default is JSON.
-                var output = Mustache.render(partialTemplate, view);
+                    var feed = new google.feeds.Feed(_o._d.feed);
 
-                $(context).empty().append(output);
+                    feed.setNumEntries(_o._d.feedLimit); //Google Feed API method
+
+                    feed.load(function (data) {
+                        var view = data.feed;
+                        var json = JSON.stringify(data.feed);
+                        debugger;
+                        $.post('/Base/CacheJSON', { key: 'defaultNewsFeed', JSONData: json });
+                        // Parse data depending on the specified response format, default is JSON.
+
+                        var output = Mustache.render(partialTemplate, view);
+
+                        $(context).empty().append(output);
+                    });
+                }
+                else {
+                    debugger;
+                    // Parse data depending on the specified response format, default is JSON.
+                    var output = Mustache.render(partialTemplate, Data.view);
+
+                    $(context).empty().append(output);
+                }
             });
         }
     };
+
 /********************************************************************************/
 /*****    7. Standard jQuery Extension function definition                 ******/
 /********************************************************************************/
