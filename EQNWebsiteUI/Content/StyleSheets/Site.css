@@ -59,7 +59,6 @@ footer {
 /*-----------------------------------------------------------------------------------------------------------------------------*/
     .canvasStyle
     {
-        opacity: .5;
         position:absolute;
         z-index:999;
         pointer-events: none;
@@ -236,9 +235,14 @@ footer {
 .footer-item {
     float: left;
     margin-right: 5px;
+    margin-left: 5px;
 }
 
 .footer-wrapper {
     background-color: gray;
     overflow: hidden;
+}
+
+.float-right {
+    float: right;
 }
