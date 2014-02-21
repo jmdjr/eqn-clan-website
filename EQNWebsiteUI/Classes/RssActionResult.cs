@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.ServiceModel.Syndication;
 using System.Xml;
+using Newtonsoft.Json;
+using System.Runtime.Serialization.Json;
+using System.IO;
 
 namespace EQNWebsiteUI.Classes
 {
@@ -15,13 +18,24 @@ namespace EQNWebsiteUI.Classes
 
         public override void ExecuteResult(ControllerContext context)
         {
-            context.HttpContext.Response.ContentType = "application/rss+xml";
-            Rss20FeedFormatter rssFormatter = new Rss20FeedFormatter(Feed);
+            JsonTextWriter jwriter = new JsonTextWriter(context.HttpContext.Response.Output);
 
-            using (XmlWriter writer = XmlWriter.Create(context.HttpContext.Response.Output))
+                context.HttpContext.Response.ContentType = "application/rss+json";
+            if (!ObjectCacheManager<string>.Instance.Contains("DefaultFeed"))
             {
-                rssFormatter.WriteTo(writer);
+                StringWriter sw = new StringWriter();
+                XmlDocument doc = new XmlDocument();
+                Rss20FeedFormatter rssFormatter = new Rss20FeedFormatter(Feed);
+                using (XmlWriter writer = XmlWriter.Create(sw))
+                {
+                    rssFormatter.WriteTo(writer);
+                }
+                doc.LoadXml(sw.ToString());
+
+                ObjectCacheManager<string>.Instance.Add("DefaultFeed", JsonConvert.SerializeXmlNode(doc));
             }
+
+            jwriter.WriteRaw(ObjectCacheManager<string>.Instance["DefaultFeed"]);
         } 
     }
 }

@@ -17,11 +17,11 @@ namespace EQNWebsiteUI.Classes
 
             if (i.items == null || i.items.Count() == 0)
             {
-                menuItems += " class='menuitem'>";
+                menuItems += " class='" + i.cssClass + " menuitem'>";
             }
             else
             {
-                menuItems += " class='menuitem-group'>";
+                menuItems += " class='" + i.cssClass + " menuitem-group'>";
                 foreach (ItemModel item in i.items)
                 {
                     moreItems += helper.RenderMenuItems(item);

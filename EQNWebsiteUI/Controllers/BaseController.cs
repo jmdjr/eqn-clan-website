@@ -8,6 +8,8 @@ using System.Xml;
 using System.Xml.Serialization;
 using EQNWebsiteUI.Models;
 using EQNWebsiteUI.Classes;
+using System.ServiceModel.Syndication;
+using System.Runtime.Serialization.Json;
 
 namespace EQNWebsiteUI.Controllers
 {
@@ -95,6 +97,18 @@ namespace EQNWebsiteUI.Controllers
             }
         }
 
-        public 
+        public RssActionResult GetFeeds(string userList = "")
+        {
+            string feedUrl = "https://forums.station.sony.com/everquestnext/index.php?forums/-/index.rss";
+            Uri feedUri = new Uri(feedUrl);
+            SyndicationFeed syndicationFeed;
+
+            using (XmlReader reader = XmlReader.Create(feedUri.AbsoluteUri))
+            {
+                syndicationFeed = SyndicationFeed.Load(reader);
+            }
+
+            return new RssActionResult() { Feed = syndicationFeed };
+        }
     }
 }

@@ -17,6 +17,9 @@ namespace EQNWebsiteUI.Models
     [XmlRoot("item")]
     public class ItemModel
     {
+        [XmlAttribute("cssClass")]
+        public string cssClass;
+
         [XmlAttribute("text")]
         public string text;
 
