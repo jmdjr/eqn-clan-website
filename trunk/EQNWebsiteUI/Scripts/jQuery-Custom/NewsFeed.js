@@ -14,7 +14,7 @@
     /*--- 0.1. initial defaults                               ----------------------*/
     var initialDefaults = {
         feed: 'https://forums.station.sony.com/everquestnext/index.php?forums/-/index.rss',
-        template: "{{#entries}}<div class='NewsFeedEntry'><a href='{{link}}'>{{title}}</a></div>{{/entries}}",
+        template: "{{#item}}<div class='NewsFeedEntry'><a href='{{link}}' target='_blank'>{{title}}</a></div>{{/item}}",
         feedLimit: 20
     };
 
@@ -61,7 +61,7 @@
                 var definedCache = $.extend({}, initialCache);
                 access.defaults(context, definedDefaults); access.cache(context, definedCache);
 
-                methods.LoadFeed($(this));
+                methods.LoadFeed(this);
             });
         },
 
@@ -69,34 +69,11 @@
             var _o = access.getState(context);
             var partialTemplate = _o._d.template;
 
+            $.get('/Base/GetFeeds', '', function (Data) {
+                var view = Data.rss.channel;
+                var output = Mustache.render(partialTemplate, view);
 
-            $.get('/Base/CacheJSON', { key: 'defaultNewsFeed', JSONData: {} }, function (Data) {
-
-                if (Data.view === undefined) {
-
-                    var feed = new google.feeds.Feed(_o._d.feed);
-
-                    feed.setNumEntries(_o._d.feedLimit); //Google Feed API method
-
-                    feed.load(function (data) {
-                        var view = data.feed;
-                        var json = JSON.stringify(data.feed);
-                        debugger;
-                        $.post('/Base/CacheJSON', { key: 'defaultNewsFeed', JSONData: json });
-                        // Parse data depending on the specified response format, default is JSON.
-
-                        var output = Mustache.render(partialTemplate, view);
-
-                        $(context).empty().append(output);
-                    });
-                }
-                else {
-                    debugger;
-                    // Parse data depending on the specified response format, default is JSON.
-                    var output = Mustache.render(partialTemplate, Data.view);
-
-                    $(context).empty().append(output);
-                }
+                $(context).empty().append(output);
             });
         }
     };

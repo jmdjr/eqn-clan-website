@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu>
   <items>
-    <item text="About Us" href="/Home/AboutUs" />
-    <item text="Code of Conduct" href="/Home/CodeOfConduct"/>
-    <item text="Charter" href="/Home/Charter" />
-    <item text="Gallery" href="/Home/Gallery" />
-    <item text="Contact Us" href="/Home/ContactUs" />
+    <item cssClass="mi-about" text="About Us" href="/Home/AboutUs" />
+    <item cssClass="mi-conduct" text="Code of Conduct" href="/Home/CodeOfConduct"/>
+    <item cssClass="mi-charter" text="Charter" href="/Home/Charter" />
+    <item cssClass="mi-gallery" text="Gallery" href="/Home/Gallery" />
+    <item cssClass="mi-contact" text="Contact Us" href="/Home/ContactUs" />
   </items>
 </menu>
