@@ -28,7 +28,7 @@ namespace EQNWebsiteUI.Classes
                 }
             }
 
-            menuItems += "<a href='" + (i.href ?? "") + "'>" + i.text + "</a>";
+            menuItems += "<a href='" + (i.href ?? "") + "'></a>";
 
             if (moreItems != "")
             {

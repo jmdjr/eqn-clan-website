@@ -69,6 +69,7 @@ footer {
 
 .header-wrapper {
     position: relative;
+    height: 138px;
 }
 
 .false-header {
@@ -105,22 +106,22 @@ footer {
     position:relative;
     clear:both;
     overflow: hidden;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-
+    height: 38px;
+    display:inline-block;
+    margin: 0px auto;
 }
 
+
     .menu-list .menuitem {
-        float: left;
             display: inline-block;
-            border: 2px solid #B835FF;
-            padding: 5px;
             background-color: #7F00FF;
             text-align:center;
             border-collapse: collapse;
     }
 
         .menu-list .menuitem a {
+            width: 100%;
+            height: 100%;
             color: white;
             font-family: Arial;
             font-size: 12px;
@@ -130,6 +131,45 @@ footer {
     
 }
 
+.menuitem {
+    background-image:url('/Images/ALL_buttons.png');
+    width: 162px;
+    height: 38px;
+}
+.mi-about {
+    background-position: -491px 0px;
+}
+.mi-about:hover {
+    background-position: -491px -38px;
+}
+
+.mi-conduct {
+    background-position: -168px 0px;
+}
+.mi-conduct:hover {
+    background-position: -168px -38px;
+}
+
+.mi-charter {
+    background-position: -328px 0px;
+}
+.mi-charter:hover {
+    background-position: -328px -38px;
+}
+
+.mi-gallery {
+    background-position: -653px 0px;
+}
+.mi-gallery:hover {
+    background-position: -653px -38px;
+}
+
+.mi-contact {    
+    background-position: 0px 0px;
+}
+.mi-contact:hover {    
+    background-position: 0px -38px;
+}
 /* Root Content */
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 .root-content, .NewsFeedWrapper, .InteractiveDisplayWrapper {
