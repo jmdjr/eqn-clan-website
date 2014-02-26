@@ -13,6 +13,10 @@ namespace EQNWebsiteUI.Controllers
             return View();
         }
 
+        public ActionResult Home() {
+            return PartialView();
+        }
+
         public ActionResult AboutUs()
         {
             return PartialView();

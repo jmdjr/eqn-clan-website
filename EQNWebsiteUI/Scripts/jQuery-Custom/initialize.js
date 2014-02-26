@@ -24,8 +24,6 @@ function PostPartialView(partialViewURL, passingArguments, intoElement) {
     }
 }
 
-
-
 $(function () {
         gridster = $('.widget-area').gridster({
             widget_margins: [0, 0],
@@ -40,7 +38,7 @@ $(function () {
             var href = $(this).attr('href');
             e.preventDefault();
 
-            GetPartialView(href, null, '.NewsFeedWrapper');
+            GetPartialView(href, null, '.LeftRegionWrapper');
         });
 
         $('.open-popup-link').magnificPopup({
@@ -52,4 +50,6 @@ $(function () {
 
             midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
         });
+
+        GetPartialView('/Home/Home', null, '.LeftRegionWrapper');
     });
