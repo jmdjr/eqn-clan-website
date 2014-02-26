@@ -390,6 +390,7 @@
     <Content Include="Views\Home\Heirarchy.cshtml" />
     <Content Include="Views\Home\CodeOfConduct.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
