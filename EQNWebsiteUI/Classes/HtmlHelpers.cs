@@ -9,35 +9,35 @@ namespace EQNWebsiteUI.Classes
 {
     public static class HtmlHelpers
     {
-        public static string RenderMenuItems(this HtmlHelper helper, ItemModel i)
-        {
-            string menuItems = "";
-            menuItems += "<li";
-            //string moreItems = "";
+        //public static string RenderMenuItems(this HtmlHelper helper, ItemModel i)
+        //{
+        //    string menuItems = "";
+        //    menuItems += "<li";
+        //    //string moreItems = "";
 
-            //if (i.items == null || i.items.Count() == 0)
-            //{
-                menuItems += " class='" + i.cssClass + " menuitem'>";
-            //}
-            //else
-            //{
-            //    menuItems += " class='" + i.cssClass + " menuitem-group'>";
-            //    foreach (ItemModel item in i.items)
-            //    {
-            //        moreItems += helper.RenderMenuItems(item);
-            //    }
-            ////}
+        //    //if (i.items == null || i.items.Count() == 0)
+        //    //{
+        //        menuItems += " class='" + i.cssClass + " menuitem'>";
+        //    //}
+        //    //else
+        //    //{
+        //    //    menuItems += " class='" + i.cssClass + " menuitem-group'>";
+        //    //    foreach (ItemModel item in i.items)
+        //    //    {
+        //    //        moreItems += helper.RenderMenuItems(item);
+        //    //    }
+        //    ////}
 
-            //menuItems += "<a href='" + (i.href ?? "") + "'></a>";
+        //    //menuItems += "<a href='" + (i.href ?? "") + "'></a>";
 
-            //if (moreItems != "")
-            //{
-            //    menuItems += "<ul>" + moreItems + "</ul>";
-            //}
+        //    //if (moreItems != "")
+        //    //{
+        //    //    menuItems += "<ul>" + moreItems + "</ul>";
+        //    //}
 
-            menuItems += "</li>";
+        //    menuItems += "</li>";
 
-            return menuItems;
-        }
+        //    return menuItems;
+        //}
     }
 }
