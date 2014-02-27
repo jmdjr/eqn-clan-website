@@ -26,8 +26,8 @@ namespace EQNWebsiteUI.Models
         [XmlAttribute("href")]
         public string href;
 
-        [XmlArray("items")]
+        [XmlArray("subItems")]
         [XmlArrayItem("item")]
-        public ItemModel[] items;
+        public ItemModel[] subItems;
     }
 }

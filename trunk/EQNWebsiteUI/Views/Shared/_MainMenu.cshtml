@@ -3,14 +3,19 @@
 @using EQNWebsiteUI.Models
 @{
     MenuModel menu = null;
-    
-    if(ViewData["Menu"] != null)
+
+    if (ViewData["Menu"] != null)
     {
         menu = (MenuModel)ViewData["Menu"];
-    }   
+    }
+
+    
+    string menuitems = Json.Encode(menu);
 }
 
-@if(menu != null)
+
+<div class="MainMenuWrapper"></div>
+@*@if(menu != null)
 {
     <ul class="menu-list">
     @foreach(ItemModel item in menu.items)
@@ -18,4 +23,26 @@
         @Html.Raw(Html.RenderMenuItems(item))
     }
     </ul>
-}
+}*@
+
+<script>
+    $(function () {
+        var menuItems = $.parseJSON(String('@(menuitems)').replace(/&quot;/g, '"'));
+        $(".MainMenuWrapper").empty().append(RenderMenu(menuItems));
+        $(".MainMenuWrapper").css({
+            width: menuItems.items.length * 162,
+            margin: '0px auto'
+        });
+        $('ul.submenu-list').hide();
+        $('ul.menu-list').find('li').hover(
+            function () {
+                $(this).find('> ul').show();
+            },
+            function () {
+                $(this).find('> ul').hide();
+                //  If something Slides Down, it should slide up as well,
+                //  instead of plain hide(), your choice - :)
+            }
+        );
+    });
+</script>
