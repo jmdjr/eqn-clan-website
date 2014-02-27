@@ -33,6 +33,9 @@
             width: menuItems.items.length * 162,
             margin: '0px auto'
         });
+        $('.MainMenuWrapper ul.menu-list > li').each(function () {
+
+        });
         $('ul.submenu-list').hide();
         $('ul.menu-list').find('li').hover(
             function () {
@@ -40,8 +43,6 @@
             },
             function () {
                 $(this).find('> ul').hide();
-                //  If something Slides Down, it should slide up as well,
-                //  instead of plain hide(), your choice - :)
             }
         );
     });
