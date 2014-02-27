@@ -2,12 +2,13 @@
 <menu>
   <items>
     <item cssClass="mi-home" text="Anti-Chamber" href="/Home/Home" />
-    <item cssClass="mi-info" text="Sect Info" href="">
-      <item cssClass="mi-conduct" text="Code of Conduct" href="/Home/CodeOfConduct" />
-      <item cssClass="mi-conduct" text="Code of Conduct" href="/Home/CodeOfConduct" />
-    </item>
     <item cssClass="mi-charter" text="Charter" href="/Home/Charter" />
     <item cssClass="mi-gallery" text="Gallery" href="/Home/Gallery" />
+    <item cssClass="mi-info menuitem-group" text="Sect Info" href="">
+      <subItems>
+        <item cssClass="mi-conduct" text="Code of Conduct" href="/Home/CodeOfConduct" />
+      </subItems>
+    </item>
     <item cssClass="mi-contact" text="Contact Us" href="/Home/ContactUs" />
     <item cssClass="mi-about" text="About Us" href="/Home/AboutUs" />
   </items>

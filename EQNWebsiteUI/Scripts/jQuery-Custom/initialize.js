@@ -24,6 +24,13 @@ function PostPartialView(partialViewURL, passingArguments, intoElement) {
     }
 }
 
+function RenderMenu(menuJSON) {
+    var template = "<ul class='menu-list'>{{#items}}<li class='menuitem {{cssClass}}'><ul class='submenu-list'>{{#subItems}}{{>subMenu}}{{/subItems}}</ul></li>{{/items}}</ul>";
+    return Mustache.render(template, menuJSON, {
+        subMenu: "<li class='{{cssClass}}'>{{text}}</li>"
+    });
+}
+
 $(function () {
         gridster = $('.widget-area').gridster({
             widget_margins: [0, 0],
@@ -52,4 +59,7 @@ $(function () {
         });
 
         GetPartialView('/Home/Home', null, '.LeftRegionWrapper');
-    });
+
+
+    }
+);

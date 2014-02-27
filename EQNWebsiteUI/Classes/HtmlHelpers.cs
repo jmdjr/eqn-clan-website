@@ -13,27 +13,27 @@ namespace EQNWebsiteUI.Classes
         {
             string menuItems = "";
             menuItems += "<li";
-            string moreItems = "";
+            //string moreItems = "";
 
-            if (i.items == null || i.items.Count() == 0)
-            {
+            //if (i.items == null || i.items.Count() == 0)
+            //{
                 menuItems += " class='" + i.cssClass + " menuitem'>";
-            }
-            else
-            {
-                menuItems += " class='" + i.cssClass + " menuitem-group'>";
-                foreach (ItemModel item in i.items)
-                {
-                    moreItems += helper.RenderMenuItems(item);
-                }
-            }
+            //}
+            //else
+            //{
+            //    menuItems += " class='" + i.cssClass + " menuitem-group'>";
+            //    foreach (ItemModel item in i.items)
+            //    {
+            //        moreItems += helper.RenderMenuItems(item);
+            //    }
+            ////}
 
-            menuItems += "<a href='" + (i.href ?? "") + "'></a>";
+            //menuItems += "<a href='" + (i.href ?? "") + "'></a>";
 
-            if (moreItems != "")
-            {
-                menuItems += "<ul>" + moreItems + "</ul>";
-            }
+            //if (moreItems != "")
+            //{
+            //    menuItems += "<ul>" + moreItems + "</ul>";
+            //}
 
             menuItems += "</li>";
 
