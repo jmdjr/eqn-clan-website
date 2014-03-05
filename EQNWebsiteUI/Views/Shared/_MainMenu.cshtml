@@ -8,42 +8,53 @@
     {
         menu = (MenuModel)ViewData["Menu"];
     }
-
     
     string menuitems = Json.Encode(menu);
 }
 
-
 <div class="MainMenuWrapper"></div>
-@*@if(menu != null)
-{
-    <ul class="menu-list">
-    @foreach(ItemModel item in menu.items)
-    {
-        @Html.Raw(Html.RenderMenuItems(item))
-    }
-    </ul>
-}*@
 
 <script>
     $(function () {
         var menuItems = $.parseJSON(String('@(menuitems)').replace(/&quot;/g, '"'));
         $(".MainMenuWrapper").empty().append(RenderMenu(menuItems));
+
         $(".MainMenuWrapper").css({
-            width: menuItems.items.length * 162,
+            width: menuItems.items.length * 163,
             margin: '0px auto'
         });
-        $('.MainMenuWrapper ul.menu-list > li').each(function () {
 
-        });
-        $('ul.submenu-list').hide();
-        $('ul.menu-list').find('li').hover(
-            function () {
-                $(this).find('> ul').show();
-            },
-            function () {
-                $(this).find('> ul').hide();
+        $('.menu-list .menuitem').each(
+            function (i) {
+                var index = Number($(this).data('index'));
+                $(this).css({ left: 163 * i, 'background-position': -163 * index + "px 0px" });
             }
         );
+
+        $("ul.menu-list li").click(function () {
+            $('.clicked').each(function () {
+                $(this).removeClass('clicked');
+                var index = Number($(this).data('index'));
+                $(this).not('.clicked').css({ 'background-position': -163 * index + "px 0px" });
+            });
+            var index = Number($(this).data('index'));
+            $(this).addClass('clicked');
+            $(this).css({ 'background-position': -163 * index + "px 38px" });
+        });
+
+        $("ul.menu-list li").hover(function () {
+            var index = Number($(this).data('index'));
+            $(this).not('.clicked').css({ 'background-position': -163 * index + "px -38px" });
+            $('ul:first', this).css('visibility', 'visible');
+
+        }, function () {
+            var index = Number($(this).data('index'));
+            $(this).not('.clicked').css({ 'background-position': -163 * index + "px 0px" });
+            $('ul:first', this).css('visibility', 'hidden');
+        });
+
+        $("ul.menu-list li ul").css('visibility', 'hidden');
+        $("ul.submenu-list:empty, a[href='']").remove();
+        $("ul.menu-list li ul li:has(ul)").find("a:first").append(" &raquo; ");
     });
 </script>

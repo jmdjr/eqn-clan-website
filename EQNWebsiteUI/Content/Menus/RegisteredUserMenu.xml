@@ -1,21 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu>
   <items>
-    <item cssClass="mi-home" text="Anti-Chamber" href="/Home/Home" />
-    <item cssClass="mi-info menuitem-group" text="Sect Info" href="">
-      <item cssClass="mi-conduct" text="Code of Conduct" href="/Home/CodeOfConduct" />
-      <item cssClass="mi-heirarchy" text="Heirarchy" href="/Home/Heirarchy"/>
-      <item cssClass="mi-roster" text="Roster" href="/Home/Roster" />
+    <item cssClass="mi-home" index="0" text="Anti-Chamber" href="/Home/Home" />
+    <item cssClass="mi-info menuitem-group" index="1" text="Sect Info" href="">
+      <subItems>
+        <item cssClass="mi-conduct" index="0" text="Code of Conduct" href="/Home/CodeOfConduct" />
+      </subItems>
     </item>
-    <item cssClass="mi-events" text="Events" href="/Home/Events" />
-    <item cssClass="mi-info" text="Sect Info" href="">
-      <item cssClass="mi-about" text="Guild Lore" href="/Home/AboutUs" />
-    <item cssClass="mi-charter" text="Charter" href="/Home/Charter" />
-    <item cssClass="mi-wiki" text="Wiki" href="/Home/Wiki" />
-    <item cssClass="mi-archives" text="Guild Archives" href="/Home/GuildArchives" />
-    <item cssClass="mi-crafters" text="Crafters" href="/Home/Crafters" />
-    </item>
-    <item cssClass="mi-gallery" text="Gallery" href="/Home/Gallery" />
-    <item cssClass="mi-contact" text="Contact Us" href="/Home/ContactUs" />
+    <item cssClass="mi-charter" index="2" text="Charter" href="/Home/Charter" />
+    <item cssClass="mi-gallery" index="3" text="Gallery" href="/Home/Gallery" />
+    <item cssClass="mi-contact" index="4" text="Contact Us" href="/Home/ContactUs" />
+    <item cssClass="mi-about" index="5" text="About Us" href="/Home/AboutUs" />
+    <item cssClass="mi-portal" index="6" text="Portal" href="/Home/AboutUs" />
   </items>
 </menu>

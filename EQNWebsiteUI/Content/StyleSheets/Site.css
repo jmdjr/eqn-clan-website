@@ -146,49 +146,18 @@ footer {
             font-size: 12px;
         }
 
-.toplevel-MenuList {
-    
-}
-
 .menuitem {
     background-image:url('/Images/ALL_buttons.png');
-    width: 162px;
+    width: 163px;
     height: 38px;
+    position: absolute;
 }
-/*.mi-about {
-    background-position: -491px 0px;
-}
-.mi-about:hover {
-    background-position: -491px -38px;
-}
-
-.mi-conduct {
-    background-position: -168px 0px;
-}
-.mi-conduct:hover {
-    background-position: -168px -38px;
+.submenu-list {
+    top: 38px;
+    background: black;
+    border: 2px solid gray;
 }
 
-.mi-charter {
-    background-position: -328px 0px;
-}
-.mi-charter:hover {
-    background-position: -328px -38px;
-}
-
-.mi-gallery {
-    background-position: -653px 0px;
-}
-.mi-gallery:hover {
-    background-position: -653px -38px;
-}
-
-.mi-contact {    
-    background-position: 0px 0px;
-}
-.mi-contact:hover {    
-    background-position: 0px -38px;
-}*/
 .MainMenuWrapper {
     bottom: 38px;
 }

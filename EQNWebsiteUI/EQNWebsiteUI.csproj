@@ -327,6 +327,7 @@
     <Content Include="Content\StyleSheets\jquery.gridster.css" />
     <Content Include="Scripts\jquery-magnificent-popup.js" />
     <Content Include="Scripts\jquery.colorbox.js" />
+    <Content Include="Scripts\jquery.dropdownPlain.js" />
     <Content Include="Scripts\jquery.gridster.js" />
     <Content Include="Content\StyleSheets\jquery.gridster.min.css" />
     <Content Include="Scripts\jquery.gridster.min.js" />
