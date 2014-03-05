@@ -25,9 +25,9 @@ function PostPartialView(partialViewURL, passingArguments, intoElement) {
 }
 
 function RenderMenu(menuJSON) {
-    var template = "<ul class='menu-list'>{{#items}}<li class='menuitem {{cssClass}}'><ul class='submenu-list'>{{#subItems}}{{>subMenu}}{{/subItems}}</ul></li>{{/items}}</ul>";
+    var template = "<ul class='menu-list'>{{#items}}<li class='menuitem {{cssClass}}' data-index='{{index}}'><a href='{{href}}'><ul class='submenu-list'>{{#subItems}}{{>subMenu}}{{/subItems}}</ul></a></li>{{/items}}</ul>";
     return Mustache.render(template, menuJSON, {
-        subMenu: "<li class='{{cssClass}}'>{{text}}</li>"
+        subMenu: "<li class='{{cssClass}}' data-index='{{index}}'><a href='{{href}}'>{{text}}</a></li>"
     });
 }
 

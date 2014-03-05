@@ -20,6 +20,9 @@ namespace EQNWebsiteUI.Models
         [XmlAttribute("cssClass")]
         public string cssClass;
 
+        [XmlAttribute("index")]
+        public string index;
+
         [XmlAttribute("text")]
         public string text;
 
