@@ -215,6 +215,7 @@
     <Compile Include="Models\EQNDB\ArticleImage.cs">
       <DependentUpon>EQNDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EQNDB\EQNDBDataProvider.cs" />
     <Compile Include="Models\EQNDB\EQNDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
