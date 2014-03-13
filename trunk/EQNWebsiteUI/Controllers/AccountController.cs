@@ -90,9 +90,13 @@ namespace EQNWebsiteUI.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
 
-                    //using (EQNDBModelEntities context = new EQNDBModelEntities())
-                    //{
-                    //}
+                    using (EQNDBModelEntities context = new EQNDBModelEntities())
+                    {
+                        User tmpUser = context.Users.Create();
+                        tmpUser.UserName = model.UserName;
+                        context.Users.Add(tmpUser);
+                        context.SaveChanges();
+                    }
 
                     WebSecurity.Login(model.UserName, model.Password);
                     return JavaScript("location.reload()");
