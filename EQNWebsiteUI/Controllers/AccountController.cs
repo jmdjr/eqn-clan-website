@@ -95,7 +95,13 @@ namespace EQNWebsiteUI.Controllers
                         User tmpUser = context.Users.Create();
                         tmpUser.UserName = model.UserName;
                         context.Users.Add(tmpUser);
-                        context.SaveChanges();
+                        context.SaveChanges();                        
+                        
+                        //int answer = context.AddNewUser(model.UserName);
+                        //if (answer != 0)
+                        //{
+                        //    throw new Exception("User Name already found in database");
+                        //}
                     }
 
                     WebSecurity.Login(model.UserName, model.Password);
