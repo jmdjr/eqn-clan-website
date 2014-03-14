@@ -7,5 +7,6 @@ namespace EQNWebsiteUI.Models.EQNDB
 {
     public class EQNDBDataProvider
     {
+
     }
 }
