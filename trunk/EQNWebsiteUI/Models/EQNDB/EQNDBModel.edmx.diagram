@@ -5,21 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f935ff71b999427aa42ed044b9fad107" Name="Diagram1">
-        <EntityTypeShape EntityType="EQNDBModelModel.ArticleImage" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EQNDBModelModel.Article" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EQNDBModelModel.Image" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="EQNDBModelModel.User" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="EQNDBModelModel.UserWidget" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EQNDBModelModel.Widget" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EQNDBModelModel.WidgetSetting" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="EQNDBModelModel.WidgetType" Width="1.5" PointX="1.5" PointY="9.875" IsExpanded="true" />
-        <AssociationConnector Association="EQNDBModelModel.FK_ArticleArticleImage" ManuallyRouted="false" />
-        <AssociationConnector Association="EQNDBModelModel.FK_ImageArticleImage" ManuallyRouted="false" />
-        <AssociationConnector Association="EQNDBModelModel.FK_ImageUser" ManuallyRouted="false" />
-        <AssociationConnector Association="EQNDBModelModel.FK_UserWidgetUser" ManuallyRouted="false" />
-        <AssociationConnector Association="EQNDBModelModel.FK_WidgetSettingUserWidget" ManuallyRouted="false" />
-        <AssociationConnector Association="EQNDBModelModel.FK_WidgetUserWidget" ManuallyRouted="false" />
-        <AssociationConnector Association="EQNDBModelModel.FK_WidgetTypeWidget" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EQNDBModelModel.ArticleImage" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="EQNDBModelModel.Article" Width="1.5" PointX="3" PointY="12.75" />
+        <EntityTypeShape EntityType="EQNDBModelModel.Image" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="EQNDBModelModel.User" Width="1.5" PointX="0.75" PointY="4" />
+        <EntityTypeShape EntityType="EQNDBModelModel.UserWidget" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="EQNDBModelModel.Widget" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="EQNDBModelModel.WidgetSetting" Width="1.5" PointX="5.25" PointY="7.625" />
+        <EntityTypeShape EntityType="EQNDBModelModel.WidgetType" Width="1.5" PointX="1.5" PointY="9.875" />
+        <AssociationConnector Association="EQNDBModelModel.FK_ArticleArticleImage" />
+        <AssociationConnector Association="EQNDBModelModel.FK_ImageArticleImage" />
+        <AssociationConnector Association="EQNDBModelModel.FK_ImageUser" />
+        <AssociationConnector Association="EQNDBModelModel.FK_UserWidgetUser" />
+        <AssociationConnector Association="EQNDBModelModel.FK_WidgetSettingUserWidget" />
+        <AssociationConnector Association="EQNDBModelModel.FK_WidgetUserWidget" />
+        <AssociationConnector Association="EQNDBModelModel.FK_WidgetTypeWidget" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
