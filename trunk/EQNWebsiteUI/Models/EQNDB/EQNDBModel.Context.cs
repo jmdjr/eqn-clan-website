@@ -12,6 +12,9 @@ namespace EQNWebsiteUI.Models.EQNDB
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class EQNDBModelEntities : DbContext
     {
@@ -33,5 +36,14 @@ namespace EQNWebsiteUI.Models.EQNDB
         public DbSet<Widget> Widgets { get; set; }
         public DbSet<WidgetSetting> WidgetSettings { get; set; }
         public DbSet<WidgetType> WidgetTypes { get; set; }
+    
+        public virtual int AddNewUser(string userName)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddNewUser", userNameParameter);
+        }
     }
 }
