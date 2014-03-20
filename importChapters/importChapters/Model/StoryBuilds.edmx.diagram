@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e624bfd20fb74c47a60cb7d6531859af" Name="Diagram1" >
+        <EntityTypeShape EntityType="StoryBuilds.User" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StoryBuilds.UserChapter" Width="1.5" PointX="3.25" PointY="0.75" />
+        <EntityTypeShape EntityType="StoryBuilds.Chapter" Width="1.625" PointX="5.625" PointY="0.5" />
+        <EntityTypeShape EntityType="StoryBuilds.Story" Width="1.625" PointX="5.625" PointY="4" />
+        <EntityTypeShape EntityType="StoryBuilds.Page" Width="1.5" PointX="9.125" PointY="0.5" />
+        <EntityTypeShape EntityType="StoryBuilds.Choice" Width="1.5" PointX="9.125" PointY="4.375" />
+        <AssociationConnector Association="StoryBuilds.PageChapter" ManuallyRouted="true" >
+          <ConnectorPoint PointX="9.125" PointY="2.1294942220052082" />
+          <ConnectorPoint PointX="7.25" PointY="2.1294942220052082" />
+        </AssociationConnector>
+        <AssociationConnector Association="StoryBuilds.ChapterFirstPage" />
+        <AssociationConnector Association="StoryBuilds.UserUserChapter" />
+        <AssociationConnector Association="StoryBuilds.UserChapterChapter" />
+        <AssociationConnector Association="StoryBuilds.StoryChapter" />
+        <AssociationConnector Association="StoryBuilds.PageChoice" />
+        <AssociationConnector Association="StoryBuilds.PageChoice1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
