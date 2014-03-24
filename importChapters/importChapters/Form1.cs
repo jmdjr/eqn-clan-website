@@ -17,8 +17,8 @@ namespace importChapters
     {
         private List<string> LoadedFiles = new List<string>();
         private StoryBuildsContainer db = new StoryBuildsContainer();
-        ExcelPackage currentPackage = null;
         int currentRow = 2;
+        ExcelPackage currentPackage = null;
 
         public ImportWindow()
         {
@@ -132,8 +132,6 @@ namespace importChapters
         //    while(
         //}
         #endregion
-
-
 
         #region UI Events
         private void SelectExcelButton_Click(object sender, EventArgs e)
