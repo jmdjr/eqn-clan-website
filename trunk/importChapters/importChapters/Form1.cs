@@ -59,6 +59,13 @@ namespace importChapters
                 FileInfo fi = new FileInfo(excelSpreadsheet);
                 currentPackage = new ExcelPackage(fi);
                 currentRow = 2;
+
+                List<ExcelRangeBase> range = currentPackage.Workbook.Worksheets[2].Cells.Where(i => i.Start.Row == 1).ToList();
+                Dictionary<string, int> lookup = new Dictionary<string, int>();
+
+                
+                
+
                 writePage(currentPackage.Workbook.Worksheets[2], currentRow);
             }
             catch (Exception)

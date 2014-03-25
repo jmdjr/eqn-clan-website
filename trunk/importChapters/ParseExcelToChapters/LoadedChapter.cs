@@ -10,12 +10,10 @@ namespace ParseExcelToChapters
 {
     public class LoadedChapter
     {
-        FileInfo loadedFile = null;
-        //string jsonCache = "";
         ExcelPackage currentPackage = null;
 
         private List<LoadedPage> pages = new List<LoadedPage>();
-
+        List<ExcelRangeBase> headerColumns = null;
         /// <summary>
         /// returns the LoadedPage in this loaded chapter.
         /// </summary>
@@ -34,42 +32,57 @@ namespace ParseExcelToChapters
             }
         }
 
+        public LoadedChapter(FileInfo excelFile)
+        {
+            RunThroughExcelSpreadsheet(excelFile);
+        }
 
-        private void RunThroughExcelSpreadsheet()
+        private void RunThroughExcelSpreadsheet(FileInfo excelFile)
         {
             try
             {
-                currentPackage = new ExcelPackage(loadedFile);
-                writePage(currentPackage.Workbook.Worksheets[2], 2);
+                currentPackage = new ExcelPackage(excelFile);
+
+                List<ExcelRangeBase> headerColumns = currentPackage.Workbook.Worksheets[2].Cells.Where(i => i.Start.Row == 1).ToList();
+
+                writePage(currentPackage.Workbook.Worksheets[2], headerColumns, 2);
             }
             catch (Exception)
             {
             }
         }
 
-        private bool writePage(ExcelWorksheet sheet, int RowIndex)
+        private string getTextFromColumn(ExcelWorksheet sheet, List<ExcelRangeBase> headers, int pageIndex, string columnName)
         {
-            //string characterName = "A";
-            //string characterImage = "B";
-            //string backgroundImage = "C";
-            //string backgroundAudio = "D";
-            string pageText = "E";
-            string nextPage = "F";
-            //string requiredPages = "G";
+            ExcelRangeBase head = headers.FirstOrDefault(i => i.Text == columnName);
+            if (head != null)
+            {
+                int column = head.Start.Column;
+                return sheet.Cells[pageIndex, column].Text;
+            }
+            return null;
+        }
 
-            string row = RowIndex.ToString();
+        private void writePage(ExcelWorksheet sheet, List<ExcelRangeBase> headers, int pageIndex)
+        {
+            // page already exists
+            if (this.pages.Any(i => i.PageNumber == pageIndex))
+            {
+                return;
+            }
 
-            //PageTextTextBox.Text = sheet.Cells[pageText + row].Text;
-            //CharacterNameTextBox.Text = sheet.Cells[characterName + row].Text;
+            string CharacterName = getTextFromColumn(sheet, headers, pageIndex, "Character Name");
+            string PageText = getTextFromColumn(sheet, headers, pageIndex, "Txt");
+            LoadedPage page = new LoadedPage(pageIndex, CharacterName, PageText);
 
-            string ops = sheet.Cells[nextPage + row].Text;
+            string ops = getTextFromColumn(sheet, headers, pageIndex, "NxtPg");
             Dictionary<string, int> options = new Dictionary<string, int>();
 
             try
             {
                 if (ops != null && ops != "" && !ops.Contains(","))
                 {
-                    options.Add("Continue", int.Parse(ops));
+                    page.AddOption("Continue", int.Parse(ops));
                 }
                 else if (ops != null && ops != "" && ops.Contains(","))
                 {
@@ -105,14 +118,6 @@ namespace ParseExcelToChapters
             return sheet.Cells[nextPage + RowIndex.ToString()].Text != "";
         }
 
-        //private string establishColumns(ExcelWorksheet sheet, string columnName)
-        //{
-        //    string currentColumnName = sheet.Cells["A1"].Text;
-        //    string columns = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-        //    while(
-        //}
-
         public class LoadedPage
         {
             public int PageNumber { get; private set;}
@@ -123,7 +128,7 @@ namespace ParseExcelToChapters
 
             public IDictionary<string, int> Options { get { return options; } }
             
-            protected LoadedPage(int pageNumber, string pageTitle, string pageDescription)
+            public LoadedPage(int pageNumber, string pageTitle, string pageDescription)
             {
                 PageNumber = pageNumber;
                 PageTitle = pageTitle;
