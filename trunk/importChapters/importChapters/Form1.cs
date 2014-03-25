@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OfficeOpenXml;
 using importChapters.Model;
+using ParseExcelToChapters;
 
 namespace importChapters
 {
     public partial class ImportWindow : Form
     {
         private List<string> LoadedFiles = new List<string>();
-        private StoryBuildsContainer db = new StoryBuildsContainer();
-        int currentRow = 2;
-        ExcelPackage currentPackage = null;
+        LoadedStory selectedStory = null;
+        LoadedChapter selectedChapter = null;
 
         public ImportWindow()
         {
@@ -44,100 +44,43 @@ namespace importChapters
             }
 
             DisplayExcelFileName.Text = names;
-        }
+            
+            if(names != null && names != "")
+            {
+                FileInfo fi = new FileInfo(LoadedFiles.FirstOrDefault());
+                selectedStory = new LoadedStory(fi);
 
-        private void ParseExcelSpreadsheets() 
-        {
-            RunThroughExcelSpreadsheet(LoadedFiles.FirstOrDefault());
+                ListBoxStories.Items.Clear();
+                ListBoxStories.Items.Add(selectedStory.StoryName);
+            }
         }
 
         #region Run Through Spreadsheet for Game
-        private void RunThroughExcelSpreadsheet(string excelSpreadsheet)
+        private void RunThroughExcelSpreadsheet()
         {
-            try
+            writePage(selectedChapter, selectedChapter.FirstPageIndex);
+        }
+
+        private void writePage(LoadedChapter chapter, int RowIndex)
+        {
+            LoadedPage page = chapter[RowIndex];
+
+            if(page != null)
             {
-                FileInfo fi = new FileInfo(excelSpreadsheet);
-                currentPackage = new ExcelPackage(fi);
-                currentRow = 2;
-
-                List<ExcelRangeBase> range = currentPackage.Workbook.Worksheets[2].Cells.Where(i => i.Start.Row == 1).ToList();
-                Dictionary<string, int> lookup = new Dictionary<string, int>();
-
-                
-                
-
-                writePage(currentPackage.Workbook.Worksheets[2], currentRow);
-            }
-            catch (Exception)
-            {
+                TextBoxCharacterName.Text = page.CharacterName;
+                TextBoxDialogue.Text = page.PageDescription;
+                ListBoxOptions.DataSource = page.Options.ToList();
             }
         }
 
-        private bool writePage(ExcelWorksheet sheet, int RowIndex)
+        private void JumpToPageSelected()
         {
-            string characterName = "A";
-            //string characterImage = "B";
-            //string backgroundImage = "C";
-            //string backgroundAudio = "D";
-            string pageText = "E";
-            string nextPage = "F";
-            //string requiredPages = "G";
-
-            string row = RowIndex.ToString();
-
-            PageTextTextBox.Text = sheet.Cells[pageText + row].Text;
-            CharacterNameTextBox.Text = sheet.Cells[characterName + row].Text;
-
-            string ops = sheet.Cells[nextPage + row].Text;
-            Dictionary<string, int> options = new Dictionary<string, int>();
-
-            try
+            if (ListBoxOptions.SelectedItem != null)
             {
-                if (ops != null && ops != "" && !ops.Contains(","))
-                {
-                    options.Add("Continue", int.Parse(ops));
-                }
-                else if (ops != null && ops != "" && ops.Contains(","))
-                {
-                    string[] newOps = ops.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-
-                    foreach (string op in newOps)
-                    {
-                        string nop = op.Trim();
-                        string label = sheet.Cells[pageText + nop].Text;
-                        string next = sheet.Cells[nextPage + nop].Text;
-
-                        if (next == null || next == "" || next.Contains(','))
-                        {
-                            throw new Exception();
-                        }
-
-                        options.Add(label, int.Parse(next));
-                    }
-                }
-                else
-                {
-                    options.Add("End of Branch", 2);
-                }
+                KeyValuePair<string, int> selection = (KeyValuePair<string, int>)ListBoxOptions.SelectedItem;
+                writePage(selectedChapter, selection.Value);
             }
-            catch (Exception)
-            {
-                options.Clear();
-                options.Add("Error: restarting", 2);
-            }
-
-            OptionsListBox.DataSource = options.ToList();
-
-            return sheet.Cells[nextPage + RowIndex.ToString()].Text != "";
         }
-
-        //private string establishColumns(ExcelWorksheet sheet, string columnName)
-        //{
-        //    string currentColumnName = sheet.Cells["A1"].Text;
-        //    string columns = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            
-        //    while(
-        //}
         #endregion
 
         #region UI Events
@@ -151,14 +94,9 @@ namespace importChapters
             LoadExcelSpreadsheet();
         }
 
-        private void InterpretButton_Click(object sender, EventArgs e)
-        {
-            ParseExcelSpreadsheets();
-        }
-
         private void TestPlayButton_Click(object sender, EventArgs e)
         {
-            ParseExcelSpreadsheets();
+            RunThroughExcelSpreadsheet();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -173,11 +111,35 @@ namespace importChapters
 
         private void ChooseOptionButton_Click(object sender, EventArgs e)
         {
-            var test = (KeyValuePair<string, int>)OptionsListBox.SelectedItem;
-
-            writePage(currentPackage.Workbook.Worksheets[2], test.Value);
+            JumpToPageSelected();
         }
+
+        private void ImportWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
 
+        private void ListBoxStories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBoxChapters.Items.Clear();
+            TestPlayButton.Enabled = false;
+            if (selectedStory != null)
+            {
+                ListBoxChapters.Items.AddRange(selectedStory.Chapters.ToArray());
+            }
+        }
+
+        private void ListBoxChapters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedChapter = (LoadedChapter)ListBoxChapters.SelectedItem;
+            TestPlayButton.Enabled = false;
+
+            if (selectedChapter != null)
+            {
+                TestPlayButton.Enabled = true;
+            }
+        }
     }
 }

@@ -148,6 +148,12 @@
   <ItemGroup>
     <Content Include="Model\StoryBuilds.edmx.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ParseExcelToChapters\ParseExcelToChapters.csproj">
+      <Project>{5be99d17-cc5a-45a8-82a1-81160867d38a}</Project>
+      <Name>ParseExcelToChapters</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

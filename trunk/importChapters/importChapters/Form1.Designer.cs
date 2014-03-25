@@ -33,19 +33,19 @@
             this.SelectButton = new System.Windows.Forms.Button();
             this.DisplayExcelFileName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ChooseOptionButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.CharacterNameTextBox = new System.Windows.Forms.TextBox();
-            this.PageTextTextBox = new System.Windows.Forms.TextBox();
-            this.OptionsListBox = new System.Windows.Forms.ListBox();
+            this.TextBoxCharacterName = new System.Windows.Forms.TextBox();
+            this.TextBoxDialogue = new System.Windows.Forms.TextBox();
+            this.ListBoxOptions = new System.Windows.Forms.ListBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.TestPlayButton = new System.Windows.Forms.Button();
             this.ToolTipsDisplay = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.LoadDatabaseButton = new System.Windows.Forms.Button();
-            this.ChapterListBox = new System.Windows.Forms.ListBox();
-            this.StoryListBox = new System.Windows.Forms.ListBox();
-            this.ChooseOptionButton = new System.Windows.Forms.Button();
+            this.ListBoxChapters = new System.Windows.Forms.ListBox();
+            this.ListBoxStories = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +55,6 @@
             this.OpenFile.FileName = "ZC.xlsx";
             this.OpenFile.Filter = "Excel Files|*.xlsx|All Files|*.*";
             this.OpenFile.InitialDirectory = "C:\\";
-            this.OpenFile.Multiselect = true;
             // 
             // SelectButton
             // 
@@ -88,14 +87,25 @@
             this.groupBox1.Controls.Add(this.ChooseOptionButton);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.CharacterNameTextBox);
-            this.groupBox1.Controls.Add(this.PageTextTextBox);
-            this.groupBox1.Controls.Add(this.OptionsListBox);
+            this.groupBox1.Controls.Add(this.TextBoxCharacterName);
+            this.groupBox1.Controls.Add(this.TextBoxDialogue);
+            this.groupBox1.Controls.Add(this.ListBoxOptions);
             this.groupBox1.Location = new System.Drawing.Point(12, 196);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(506, 158);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // ChooseOptionButton
+            // 
+            this.ChooseOptionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChooseOptionButton.Location = new System.Drawing.Point(380, 129);
+            this.ChooseOptionButton.Name = "ChooseOptionButton";
+            this.ChooseOptionButton.Size = new System.Drawing.Size(120, 23);
+            this.ChooseOptionButton.TabIndex = 5;
+            this.ChooseOptionButton.Text = "Choose";
+            this.ChooseOptionButton.UseVisualStyleBackColor = true;
+            this.ChooseOptionButton.Click += new System.EventHandler(this.ChooseOptionButton_Click);
             // 
             // label2
             // 
@@ -115,35 +125,35 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Character Name";
             // 
-            // CharacterNameTextBox
+            // TextBoxCharacterName
             // 
-            this.CharacterNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TextBoxCharacterName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CharacterNameTextBox.Location = new System.Drawing.Point(96, 19);
-            this.CharacterNameTextBox.Name = "CharacterNameTextBox";
-            this.CharacterNameTextBox.Size = new System.Drawing.Size(278, 20);
-            this.CharacterNameTextBox.TabIndex = 2;
+            this.TextBoxCharacterName.Location = new System.Drawing.Point(96, 19);
+            this.TextBoxCharacterName.Name = "TextBoxCharacterName";
+            this.TextBoxCharacterName.Size = new System.Drawing.Size(278, 20);
+            this.TextBoxCharacterName.TabIndex = 2;
             // 
-            // PageTextTextBox
+            // TextBoxDialogue
             // 
-            this.PageTextTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TextBoxDialogue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PageTextTextBox.Location = new System.Drawing.Point(6, 66);
-            this.PageTextTextBox.Multiline = true;
-            this.PageTextTextBox.Name = "PageTextTextBox";
-            this.PageTextTextBox.Size = new System.Drawing.Size(368, 86);
-            this.PageTextTextBox.TabIndex = 1;
+            this.TextBoxDialogue.Location = new System.Drawing.Point(6, 66);
+            this.TextBoxDialogue.Multiline = true;
+            this.TextBoxDialogue.Name = "TextBoxDialogue";
+            this.TextBoxDialogue.Size = new System.Drawing.Size(368, 86);
+            this.TextBoxDialogue.TabIndex = 1;
             // 
-            // OptionsListBox
+            // ListBoxOptions
             // 
-            this.OptionsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ListBoxOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.OptionsListBox.FormattingEnabled = true;
-            this.OptionsListBox.Location = new System.Drawing.Point(380, 18);
-            this.OptionsListBox.Name = "OptionsListBox";
-            this.OptionsListBox.Size = new System.Drawing.Size(120, 108);
-            this.OptionsListBox.TabIndex = 0;
+            this.ListBoxOptions.FormattingEnabled = true;
+            this.ListBoxOptions.Location = new System.Drawing.Point(380, 18);
+            this.ListBoxOptions.Name = "ListBoxOptions";
+            this.ListBoxOptions.Size = new System.Drawing.Size(120, 108);
+            this.ListBoxOptions.TabIndex = 0;
             // 
             // SaveButton
             // 
@@ -160,7 +170,8 @@
             // TestPlayButton
             // 
             this.TestPlayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.TestPlayButton.Location = new System.Drawing.Point(418, 19);
+            this.TestPlayButton.Enabled = false;
+            this.TestPlayButton.Location = new System.Drawing.Point(418, 113);
             this.TestPlayButton.Name = "TestPlayButton";
             this.TestPlayButton.Size = new System.Drawing.Size(82, 30);
             this.TestPlayButton.TabIndex = 3;
@@ -175,9 +186,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.LoadDatabaseButton);
-            this.groupBox2.Controls.Add(this.ChapterListBox);
+            this.groupBox2.Controls.Add(this.ListBoxChapters);
             this.groupBox2.Controls.Add(this.TestPlayButton);
-            this.groupBox2.Controls.Add(this.StoryListBox);
+            this.groupBox2.Controls.Add(this.ListBoxStories);
             this.groupBox2.Location = new System.Drawing.Point(12, 41);
             this.groupBox2.MinimumSize = new System.Drawing.Size(348, 149);
             this.groupBox2.Name = "groupBox2";
@@ -188,7 +199,8 @@
             // LoadDatabaseButton
             // 
             this.LoadDatabaseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoadDatabaseButton.Location = new System.Drawing.Point(418, 96);
+            this.LoadDatabaseButton.Enabled = false;
+            this.LoadDatabaseButton.Location = new System.Drawing.Point(418, 19);
             this.LoadDatabaseButton.Name = "LoadDatabaseButton";
             this.LoadDatabaseButton.Size = new System.Drawing.Size(82, 47);
             this.LoadDatabaseButton.TabIndex = 4;
@@ -196,36 +208,27 @@
             this.LoadDatabaseButton.UseVisualStyleBackColor = true;
             this.LoadDatabaseButton.Click += new System.EventHandler(this.LoadDatabaseButton_Click);
             // 
-            // ChapterListBox
+            // ListBoxChapters
             // 
-            this.ChapterListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ListBoxChapters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.ChapterListBox.FormattingEnabled = true;
-            this.ChapterListBox.Location = new System.Drawing.Point(212, 19);
-            this.ChapterListBox.Name = "ChapterListBox";
-            this.ChapterListBox.Size = new System.Drawing.Size(198, 121);
-            this.ChapterListBox.TabIndex = 0;
+            this.ListBoxChapters.FormattingEnabled = true;
+            this.ListBoxChapters.Location = new System.Drawing.Point(212, 19);
+            this.ListBoxChapters.Name = "ListBoxChapters";
+            this.ListBoxChapters.Size = new System.Drawing.Size(198, 121);
+            this.ListBoxChapters.TabIndex = 0;
+            this.ListBoxChapters.SelectedIndexChanged += new System.EventHandler(this.ListBoxChapters_SelectedIndexChanged);
             // 
-            // StoryListBox
+            // ListBoxStories
             // 
-            this.StoryListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ListBoxStories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.StoryListBox.FormattingEnabled = true;
-            this.StoryListBox.Location = new System.Drawing.Point(6, 19);
-            this.StoryListBox.Name = "StoryListBox";
-            this.StoryListBox.Size = new System.Drawing.Size(200, 121);
-            this.StoryListBox.TabIndex = 0;
-            // 
-            // ChooseOptionButton
-            // 
-            this.ChooseOptionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChooseOptionButton.Location = new System.Drawing.Point(380, 129);
-            this.ChooseOptionButton.Name = "ChooseOptionButton";
-            this.ChooseOptionButton.Size = new System.Drawing.Size(120, 23);
-            this.ChooseOptionButton.TabIndex = 5;
-            this.ChooseOptionButton.Text = "Choose";
-            this.ChooseOptionButton.UseVisualStyleBackColor = true;
-            this.ChooseOptionButton.Click += new System.EventHandler(this.ChooseOptionButton_Click);
+            this.ListBoxStories.FormattingEnabled = true;
+            this.ListBoxStories.Location = new System.Drawing.Point(6, 19);
+            this.ListBoxStories.Name = "ListBoxStories";
+            this.ListBoxStories.Size = new System.Drawing.Size(200, 121);
+            this.ListBoxStories.TabIndex = 0;
+            this.ListBoxStories.SelectedIndexChanged += new System.EventHandler(this.ListBoxStories_SelectedIndexChanged);
             // 
             // ImportWindow
             // 
@@ -240,6 +243,7 @@
             this.MinimumSize = new System.Drawing.Size(546, 445);
             this.Name = "ImportWindow";
             this.Text = "Import Chapters";
+            this.Load += new System.EventHandler(this.ImportWindow_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -254,18 +258,18 @@
         private System.Windows.Forms.Button SelectButton;
         private System.Windows.Forms.TextBox DisplayExcelFileName;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox OptionsListBox;
+        private System.Windows.Forms.ListBox ListBoxOptions;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.TextBox PageTextTextBox;
+        private System.Windows.Forms.TextBox TextBoxDialogue;
         private System.Windows.Forms.Button TestPlayButton;
         private System.Windows.Forms.ToolTip ToolTipsDisplay;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button LoadDatabaseButton;
-        private System.Windows.Forms.ListBox ChapterListBox;
-        private System.Windows.Forms.ListBox StoryListBox;
+        private System.Windows.Forms.ListBox ListBoxChapters;
+        private System.Windows.Forms.ListBox ListBoxStories;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox CharacterNameTextBox;
+        private System.Windows.Forms.TextBox TextBoxCharacterName;
         private System.Windows.Forms.Button ChooseOptionButton;
     }
 }
