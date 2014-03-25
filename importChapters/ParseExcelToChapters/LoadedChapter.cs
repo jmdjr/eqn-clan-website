@@ -8,12 +8,46 @@ using OfficeOpenXml;
 
 namespace ParseExcelToChapters
 {
-    public class LoadedChapter
+    public sealed class LoadedStory
     {
-        ExcelPackage currentPackage = null;
+        public string StoryName { get; private set; }
 
+        private List<LoadedChapter> chapters { get; set; }
+        public IList<LoadedChapter> Chapters { get { return chapters.AsReadOnly(); } }
+
+        public LoadedStory(FileInfo excelFile, int firstPageIndex = 2)
+        {
+            chapters = new List<LoadedChapter>();
+            
+            using (ExcelPackage currentPackage = new ExcelPackage(excelFile))
+            {
+                this.StoryName = currentPackage.Workbook.Properties.Title;
+                ExcelWorksheets worksheets = currentPackage.Workbook.Worksheets;
+
+                int chapter = 1;
+                while (chapter <= worksheets.Count())
+                {
+                    chapters.Add(new LoadedChapter(worksheets[chapter], firstPageIndex));
+                    ++chapter;
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return this.StoryName;
+        }
+        //public void SaveToDatabase(){}
+    }
+
+    public sealed class LoadedChapter
+    {
+        public string ChapterName { get; private set; }
+        public int ChapterIndex { get; private set; }
+        public string RequiresChapter { get; private set; }
+        public int FirstPageIndex { get; private set; }
         private List<LoadedPage> pages = new List<LoadedPage>();
-        List<ExcelRangeBase> headerColumns = null;
+
         /// <summary>
         /// returns the LoadedPage in this loaded chapter.
         /// </summary>
@@ -31,114 +65,120 @@ namespace ParseExcelToChapters
                 return pages.FirstOrDefault(i => i.PageNumber == pageIndex);
             }
         }
-
-        public LoadedChapter(FileInfo excelFile)
+        public LoadedChapter(ExcelWorksheet sheet, int startingPageRow = 2)
         {
-            RunThroughExcelSpreadsheet(excelFile);
+            this.FirstPageIndex = startingPageRow;
+            RunThroughExcelSpreadsheet(sheet, startingPageRow);
         }
 
-        private void RunThroughExcelSpreadsheet(FileInfo excelFile)
+        private void RunThroughExcelSpreadsheet(ExcelWorksheet sheet, int startingPage)
         {
-            try
-            {
-                currentPackage = new ExcelPackage(excelFile);
-
-                List<ExcelRangeBase> headerColumns = currentPackage.Workbook.Worksheets[2].Cells.Where(i => i.Start.Row == 1).ToList();
-
-                writePage(currentPackage.Workbook.Worksheets[2], headerColumns, 2);
-            }
-            catch (Exception)
-            {
-            }
+            this.ChapterName = sheet.Name;
+            List<ExcelRangeBase> headerColumns = sheet.Cells.Where(i => i.Start.Row == 1).ToList();
+            writePage(sheet, headerColumns, startingPage, startingPage);
         }
-
-        private string getTextFromColumn(ExcelWorksheet sheet, List<ExcelRangeBase> headers, int pageIndex, string columnName)
+        
+        private void writePage(ExcelWorksheet sheet, List<ExcelRangeBase> headers, int pageIndex, int startingPageIndex)
         {
-            ExcelRangeBase head = headers.FirstOrDefault(i => i.Text == columnName);
-            if (head != null)
-            {
-                int column = head.Start.Column;
-                return sheet.Cells[pageIndex, column].Text;
-            }
-            return null;
-        }
-
-        private void writePage(ExcelWorksheet sheet, List<ExcelRangeBase> headers, int pageIndex)
-        {
-            // page already exists
             if (this.pages.Any(i => i.PageNumber == pageIndex))
             {
+                // page already exists, no need to construct it. this prevents building loops.
                 return;
             }
 
-            string CharacterName = getTextFromColumn(sheet, headers, pageIndex, "Character Name");
-            string PageText = getTextFromColumn(sheet, headers, pageIndex, "Txt");
-            LoadedPage page = new LoadedPage(pageIndex, CharacterName, PageText);
-
-            string ops = getTextFromColumn(sheet, headers, pageIndex, "NxtPg");
-            Dictionary<string, int> options = new Dictionary<string, int>();
+            string CharacterName = ExelParserHelper.getTextFromColumn(sheet, headers, pageIndex, "Char Name");
+            string CharacterImage = ExelParserHelper.getTextFromColumn(sheet, headers, pageIndex, "Char Img");
+            string BackgroundImage = ExelParserHelper.getTextFromColumn(sheet, headers, pageIndex, "BG Img");
+            string BackgroundAudio = ExelParserHelper.getTextFromColumn(sheet, headers, pageIndex, "BG Audio");
+            string PageText = ExelParserHelper.getTextFromColumn(sheet, headers, pageIndex, "Page Txt");
+            string ops = ExelParserHelper.getTextFromColumn(sheet, headers, pageIndex, "Options");
+            LoadedPage page = new LoadedPage(pageIndex, CharacterName, PageText, CharacterImage, BackgroundImage, BackgroundAudio);
 
             try
             {
-                if (ops != null && ops != "" && !ops.Contains(","))
-                {
-                    page.AddOption("Continue", int.Parse(ops));
-                }
-                else if (ops != null && ops != "" && ops.Contains(","))
-                {
-                    string[] newOps = ops.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                int opPageNumber = startingPageIndex;
 
-                    foreach (string op in newOps)
+                List<int> options = ops.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries)
+                                    .ToList()
+                                    .ConvertAll<int>(i => int.Parse(i.Trim()));
+                
+                if (options.Count() == 1)
+                {
+                    opPageNumber = int.Parse(ops);
+                    page.AddOption("Continue", opPageNumber);
+                    writePage(sheet, headers, opPageNumber, startingPageIndex);
+                }
+                else if (options.Count() > 1)
+                {
+                    foreach (int op in options)
                     {
-                        string nop = op.Trim();
-                        string label = sheet.Cells[pageText + nop].Text;
-                        string next = sheet.Cells[nextPage + nop].Text;
+                        opPageNumber = op;
+
+                        string label = ExelParserHelper.getTextFromColumn(sheet, headers, opPageNumber, "Page Txt");
+                        string next = ExelParserHelper.getTextFromColumn(sheet, headers, opPageNumber, "Options");
 
                         if (next == null || next == "" || next.Contains(','))
                         {
-                            throw new Exception();
+                            throw new Exception(String.Format("FORMAT ISSUE: row {0}, of chapter \"{1}\": option page number not found, or too many pages exist. ", pageIndex, this.ChapterName));
                         }
 
-                        options.Add(label, int.Parse(next));
+                        opPageNumber = int.Parse(next);
+                        page.AddOption(label, opPageNumber);
+                        writePage(sheet, headers, opPageNumber, startingPageIndex);
                     }
                 }
                 else
                 {
-                    options.Add("End of Branch", 2);
+                    page.AddOption("End of Branch", startingPageIndex);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                options.Clear();
-                options.Add("Error: restarting", 2);
+                page.ClearOptions();
+                page.AddOption("Page Parse Error", startingPageIndex);
+                throw e;
             }
 
-            //OptionsListBox.DataSource = options.ToList();
-
-            return sheet.Cells[nextPage + RowIndex.ToString()].Text != "";
+            this.pages.Add(page);
         }
 
-        public class LoadedPage
+        public override string ToString()
         {
-            public int PageNumber { get; private set;}
-            public string PageTitle { get; private set; }
-            public string PageDescription { get; private set; }
+            return this.ChapterName;
+        }
+    }
 
-            private Dictionary<string, int> options = new Dictionary<string, int>();
+    public sealed class LoadedPage
+    {
+        public int PageNumber { get; private set; }
+        public string CharacterName { get; private set; }
+        public string PageDescription { get; private set; }
+        public string CharacterImageUrl { get; private set; }
+        public string BackgroundImageUrl { get; private set; }
+        public string BackgroundAudioUrl { get; private set; }
 
-            public IDictionary<string, int> Options { get { return options; } }
-            
-            public LoadedPage(int pageNumber, string pageTitle, string pageDescription)
-            {
-                PageNumber = pageNumber;
-                PageTitle = pageTitle;
-                PageDescription = pageDescription;
-            }
+        private Dictionary<string, int> options = new Dictionary<string, int>();
 
-            public void AddOption(string optionText, int pageNumber)
-            {
-                options.Add(optionText, pageNumber);
-            }
+        public Dictionary<string, int> Options { get { return options; } }
+
+        public LoadedPage(int pageNumber, string characterName, string pageDescription, string characterImage, string backgroundImage, string backgroundAudio)
+        {
+            PageNumber = pageNumber;
+            CharacterName = characterName;
+            PageDescription = pageDescription;
+            CharacterImageUrl = characterImage;
+            BackgroundImageUrl = backgroundImage;
+            BackgroundAudioUrl = backgroundAudio;
+        }
+
+        public void AddOption(string optionText, int pageNumber)
+        {
+            options.Add(optionText, pageNumber);
+        }
+
+        public void ClearOptions()
+        {
+            options.Clear();
         }
     }
 }
