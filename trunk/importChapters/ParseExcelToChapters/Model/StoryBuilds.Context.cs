@@ -12,11 +12,14 @@ namespace ParseExcelToChapters.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
-    public partial class StoryBuildsContainer : DbContext
+    public partial class StoryBuildsEntities : DbContext
     {
-        public StoryBuildsContainer()
-            : base("name=StoryBuildsContainer")
+        public StoryBuildsEntities()
+            : base("name=StoryBuildsEntities")
         {
         }
     
@@ -25,11 +28,22 @@ namespace ParseExcelToChapters.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserChapter> UserChapters { get; set; }
         public DbSet<Chapter> Chapters { get; set; }
-        public DbSet<Story> Stories { get; set; }
-        public DbSet<Page> Pages { get; set; }
         public DbSet<Choice> Choices { get; set; }
+        public DbSet<Page> Pages { get; set; }
+        public DbSet<Story> Stories { get; set; }
+    
+        public virtual ObjectResult<Nullable<int>> InsertStory(string storyName, Nullable<decimal> storyPrice)
+        {
+            var storyNameParameter = storyName != null ?
+                new ObjectParameter("StoryName", storyName) :
+                new ObjectParameter("StoryName", typeof(string));
+    
+            var storyPriceParameter = storyPrice.HasValue ?
+                new ObjectParameter("StoryPrice", storyPrice) :
+                new ObjectParameter("StoryPrice", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("InsertStory", storyNameParameter, storyPriceParameter);
+        }
     }
 }

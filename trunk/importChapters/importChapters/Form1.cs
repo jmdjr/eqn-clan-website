@@ -8,8 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OfficeOpenXml;
-using importChapters.Model;
 using ParseExcelToChapters;
 
 namespace importChapters
@@ -101,7 +99,12 @@ namespace importChapters
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            DialogResult results = MessageBox.Show("Confirm you actually want to save this to the database", "Are You Sure?", MessageBoxButtons.OKCancel);
 
+            if (results == System.Windows.Forms.DialogResult.OK)
+            {
+                selectedStory.SaveToDatabase();
+            }
         }
         
         private void LoadDatabaseButton_Click(object sender, EventArgs e)

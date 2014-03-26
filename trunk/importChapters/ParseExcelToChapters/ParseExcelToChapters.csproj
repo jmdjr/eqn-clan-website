@@ -30,10 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus">
@@ -54,6 +56,8 @@
   <ItemGroup>
     <Compile Include="ExelParserHelper.cs" />
     <Compile Include="LoadedChapter.cs" />
+    <Compile Include="LoadedPage.cs" />
+    <Compile Include="LoadedStory.cs" />
     <Compile Include="Model\Chapter.cs">
       <DependentUpon>StoryBuilds.tt</DependentUpon>
     </Compile>
@@ -63,32 +67,23 @@
     <Compile Include="Model\Page.cs">
       <DependentUpon>StoryBuilds.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\PageType.cs">
-      <DependentUpon>StoryBuilds.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Story.cs">
       <DependentUpon>StoryBuilds.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\StoryBuilds.Context.cs">
-      <DependentUpon>StoryBuilds.Context.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>StoryBuilds.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\StoryBuilds.cs">
-      <DependentUpon>StoryBuilds.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>StoryBuilds.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\StoryBuilds.Designer.cs">
-      <DependentUpon>StoryBuilds.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Model\User.cs">
-      <DependentUpon>StoryBuilds.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\UserChapter.cs">
-      <DependentUpon>StoryBuilds.tt</DependentUpon>
+      <DependentUpon>StoryBuilds.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -112,9 +107,6 @@
       <LastGenOutput>StoryBuilds.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model\StoryBuilds.edmx.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

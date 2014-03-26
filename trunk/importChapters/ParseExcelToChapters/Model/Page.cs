@@ -16,18 +16,22 @@ namespace ParseExcelToChapters.Model
     {
         public Page()
         {
+            this.Chapters = new HashSet<Chapter>();
             this.Choices = new HashSet<Choice>();
+            this.Choices1 = new HashSet<Choice>();
         }
     
         public int PageId { get; set; }
         public int ChapterId { get; set; }
         public string DisplayText { get; set; }
-        public PageType PageType { get; set; }
+        public int PageType { get; set; }
         public string BackgroundImage { get; set; }
         public string CharacterImage { get; set; }
         public bool IsImportantOption { get; set; }
     
+        public virtual ICollection<Chapter> Chapters { get; set; }
         public virtual Chapter Chapter { get; set; }
         public virtual ICollection<Choice> Choices { get; set; }
+        public virtual ICollection<Choice> Choices1 { get; set; }
     }
 }
