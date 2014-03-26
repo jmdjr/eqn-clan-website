@@ -5,41 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OfficeOpenXml;
+using ParseExcelToChapters.Model;
 
 namespace ParseExcelToChapters
 {
-    public sealed class LoadedStory
-    {
-        public string StoryName { get; private set; }
-
-        private List<LoadedChapter> chapters { get; set; }
-        public IList<LoadedChapter> Chapters { get { return chapters.AsReadOnly(); } }
-
-        public LoadedStory(FileInfo excelFile, int firstPageIndex = 2)
-        {
-            chapters = new List<LoadedChapter>();
-            
-            using (ExcelPackage currentPackage = new ExcelPackage(excelFile))
-            {
-                this.StoryName = currentPackage.Workbook.Properties.Title;
-                ExcelWorksheets worksheets = currentPackage.Workbook.Worksheets;
-
-                int chapter = 1;
-                while (chapter <= worksheets.Count())
-                {
-                    chapters.Add(new LoadedChapter(worksheets[chapter], firstPageIndex));
-                    ++chapter;
-                }
-            }
-        }
-
-        public override string ToString()
-        {
-            return this.StoryName;
-        }
-        //public void SaveToDatabase(){}
-    }
-
     public sealed class LoadedChapter
     {
         public string ChapterName { get; private set; }
@@ -47,7 +16,7 @@ namespace ParseExcelToChapters
         public string RequiresChapter { get; private set; }
         public int FirstPageIndex { get; private set; }
         private List<LoadedPage> pages = new List<LoadedPage>();
-
+        public IList<LoadedPage> Pages { get { return pages.AsReadOnly(); } }
         /// <summary>
         /// returns the LoadedPage in this loaded chapter.
         /// </summary>
@@ -145,40 +114,6 @@ namespace ParseExcelToChapters
         public override string ToString()
         {
             return this.ChapterName;
-        }
-    }
-
-    public sealed class LoadedPage
-    {
-        public int PageNumber { get; private set; }
-        public string CharacterName { get; private set; }
-        public string PageDescription { get; private set; }
-        public string CharacterImageUrl { get; private set; }
-        public string BackgroundImageUrl { get; private set; }
-        public string BackgroundAudioUrl { get; private set; }
-
-        private Dictionary<string, int> options = new Dictionary<string, int>();
-
-        public Dictionary<string, int> Options { get { return options; } }
-
-        public LoadedPage(int pageNumber, string characterName, string pageDescription, string characterImage, string backgroundImage, string backgroundAudio)
-        {
-            PageNumber = pageNumber;
-            CharacterName = characterName;
-            PageDescription = pageDescription;
-            CharacterImageUrl = characterImage;
-            BackgroundImageUrl = backgroundImage;
-            BackgroundAudioUrl = backgroundAudio;
-        }
-
-        public void AddOption(string optionText, int pageNumber)
-        {
-            options.Add(optionText, pageNumber);
-        }
-
-        public void ClearOptions()
-        {
-            options.Clear();
         }
     }
 }

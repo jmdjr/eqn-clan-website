@@ -19,7 +19,7 @@ namespace ParseExcelToChapters.Model
         public int TargetPageId { get; set; }
         public int SourcePageId { get; set; }
     
-        public virtual Page TargetPage { get; set; }
-        public virtual Page SourcePage { get; set; }
+        public virtual Page Page { get; set; }
+        public virtual Page Page1 { get; set; }
     }
 }

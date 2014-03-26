@@ -32,16 +32,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EPPlus">
-      <HintPath>..\packages\EPPlus.3.1.3.3\lib\net35\EPPlus.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -61,42 +61,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Chapter.cs">
-      <DependentUpon>StoryBuilds.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Choice.cs">
-      <DependentUpon>StoryBuilds.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Page.cs">
-      <DependentUpon>StoryBuilds.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\PageType.cs">
-      <DependentUpon>StoryBuilds.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Story.cs">
-      <DependentUpon>StoryBuilds.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\StoryBuilds.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoryBuilds.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\StoryBuilds.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoryBuilds.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\StoryBuilds.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoryBuilds.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\User.cs">
-      <DependentUpon>StoryBuilds.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\UserChapter.cs">
-      <DependentUpon>StoryBuilds.tt</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -111,23 +75,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="Model\StoryBuilds.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StoryBuilds.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Model\StoryBuilds.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StoryBuilds.edmx</DependentUpon>
-      <LastGenOutput>StoryBuilds.Context.cs</LastGenOutput>
-    </None>
-    <None Include="Model\StoryBuilds.edmx.diagram">
-      <DependentUpon>StoryBuilds.edmx</DependentUpon>
-    </None>
-    <None Include="Model\StoryBuilds.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StoryBuilds.edmx</DependentUpon>
-      <LastGenOutput>StoryBuilds.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -144,9 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model\StoryBuilds.edmx.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ParseExcelToChapters\ParseExcelToChapters.csproj">

@@ -17,7 +17,6 @@ namespace ParseExcelToChapters.Model
         public Chapter()
         {
             this.Pages = new HashSet<Page>();
-            this.Owners = new HashSet<UserChapter>();
         }
     
         public int ChapterId { get; set; }
@@ -25,9 +24,8 @@ namespace ParseExcelToChapters.Model
         public decimal Price { get; set; }
         public int FirstPageId { get; set; }
     
+        public virtual Page Page { get; set; }
         public virtual ICollection<Page> Pages { get; set; }
-        public virtual Page FirstPage { get; set; }
-        public virtual ICollection<UserChapter> Owners { get; set; }
         public virtual Story Story { get; set; }
     }
 }

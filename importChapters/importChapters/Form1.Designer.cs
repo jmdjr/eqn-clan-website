@@ -162,7 +162,7 @@
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(82, 30);
             this.SaveButton.TabIndex = 1;
-            this.SaveButton.Text = "Save";
+            this.SaveButton.Text = "Save to DB";
             this.ToolTipsDisplay.SetToolTip(this.SaveButton, "Save Parsed Data");
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
