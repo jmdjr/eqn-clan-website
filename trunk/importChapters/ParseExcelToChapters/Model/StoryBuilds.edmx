@@ -5,135 +5,131 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="StoryBuildsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="StoryBuildsModelStoreContainer">
-          <EntitySet Name="Chapter" EntityType="StoryBuildsModel.Store.Chapter" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Choice" EntityType="StoryBuildsModel.Store.Choice" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Page" EntityType="StoryBuildsModel.Store.Page" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Story" EntityType="StoryBuildsModel.Store.Story" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_ChapterFirstPage" Association="StoryBuildsModel.Store.FK_ChapterFirstPage">
-            <End Role="Page" EntitySet="Page" />
-            <End Role="Chapter" EntitySet="Chapter" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PageChapter" Association="StoryBuildsModel.Store.FK_PageChapter">
-            <End Role="Chapter" EntitySet="Chapter" />
-            <End Role="Page" EntitySet="Page" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PageChoice" Association="StoryBuildsModel.Store.FK_PageChoice">
-            <End Role="Page" EntitySet="Page" />
-            <End Role="Choice" EntitySet="Choice" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PageChoice1" Association="StoryBuildsModel.Store.FK_PageChoice1">
-            <End Role="Page" EntitySet="Page" />
-            <End Role="Choice" EntitySet="Choice" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StoryChapter" Association="StoryBuildsModel.Store.FK_StoryChapter">
-            <End Role="Story" EntitySet="Story" />
-            <End Role="Chapter" EntitySet="Chapter" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="Chapter">
-          <Key>
-            <PropertyRef Name="ChapterId" />
-          </Key>
-          <Property Name="ChapterId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="StoryId" Type="int" Nullable="false" />
-          <Property Name="Price" Type="decimal" Nullable="false" />
-          <Property Name="FirstPageId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Choice">
-          <Key>
-            <PropertyRef Name="ChoiceId" />
-          </Key>
-          <Property Name="ChoiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="DisplayText" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="TargetPageId" Type="int" Nullable="false" />
-          <Property Name="SourcePageId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Page">
-          <Key>
-            <PropertyRef Name="PageId" />
-          </Key>
-          <Property Name="PageId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="ChapterId" Type="int" Nullable="false" />
-          <Property Name="DisplayText" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="PageType" Type="int" Nullable="false" />
-          <Property Name="BackgroundImage" Type="nvarchar(max)" />
-          <Property Name="CharacterImage" Type="nvarchar(max)" />
-          <Property Name="IsImportantOption" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Story">
-          <Key>
-            <PropertyRef Name="StoryId" />
-          </Key>
-          <Property Name="StoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="StoryName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Price" Type="decimal" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_ChapterFirstPage">
-          <End Role="Page" Type="StoryBuildsModel.Store.Page" Multiplicity="1" />
-          <End Role="Chapter" Type="StoryBuildsModel.Store.Chapter" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Page">
-              <PropertyRef Name="PageId" />
-            </Principal>
-            <Dependent Role="Chapter">
-              <PropertyRef Name="FirstPageId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PageChapter">
-          <End Role="Chapter" Type="StoryBuildsModel.Store.Chapter" Multiplicity="1" />
-          <End Role="Page" Type="StoryBuildsModel.Store.Page" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Chapter">
-              <PropertyRef Name="ChapterId" />
-            </Principal>
-            <Dependent Role="Page">
-              <PropertyRef Name="ChapterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PageChoice">
-          <End Role="Page" Type="StoryBuildsModel.Store.Page" Multiplicity="1" />
-          <End Role="Choice" Type="StoryBuildsModel.Store.Choice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Page">
-              <PropertyRef Name="PageId" />
-            </Principal>
-            <Dependent Role="Choice">
-              <PropertyRef Name="TargetPageId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PageChoice1">
-          <End Role="Page" Type="StoryBuildsModel.Store.Page" Multiplicity="1" />
-          <End Role="Choice" Type="StoryBuildsModel.Store.Choice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Page">
-              <PropertyRef Name="PageId" />
-            </Principal>
-            <Dependent Role="Choice">
-              <PropertyRef Name="SourcePageId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StoryChapter">
-          <End Role="Story" Type="StoryBuildsModel.Store.Story" Multiplicity="1" />
-          <End Role="Chapter" Type="StoryBuildsModel.Store.Chapter" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Story">
-              <PropertyRef Name="StoryId" />
-            </Principal>
-            <Dependent Role="Chapter">
-              <PropertyRef Name="StoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Function Name="InsertStory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="StoryName" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="StoryPrice" Type="decimal" Mode="In" />
-        </Function>
-      </Schema></edmx:StorageModels>
+  <EntityContainer Name="StoryBuildsModelStoreContainer">
+    <EntitySet Name="Chapters" EntityType="StoryBuildsModel.Store.Chapters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Choices" EntityType="StoryBuildsModel.Store.Choices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pages" EntityType="StoryBuildsModel.Store.Pages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stories" EntityType="StoryBuildsModel.Store.Stories" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_ChapterFirstPage" Association="StoryBuildsModel.Store.FK_ChapterFirstPage">
+      <End Role="Page" EntitySet="Pages" />
+      <End Role="Chapter" EntitySet="Chapters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PageChapter" Association="StoryBuildsModel.Store.FK_PageChapter">
+      <End Role="Chapter" EntitySet="Chapters" />
+      <End Role="Page" EntitySet="Pages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoryChapter" Association="StoryBuildsModel.Store.FK_StoryChapter">
+      <End Role="Story" EntitySet="Stories" />
+      <End Role="Chapter" EntitySet="Chapters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PageChoice" Association="StoryBuildsModel.Store.FK_PageChoice">
+      <End Role="Page" EntitySet="Pages" />
+      <End Role="Choice" EntitySet="Choices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PageChoice1" Association="StoryBuildsModel.Store.FK_PageChoice1">
+      <End Role="Page" EntitySet="Pages" />
+      <End Role="Choice" EntitySet="Choices" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Chapters">
+    <Key>
+      <PropertyRef Name="ChapterId" />
+    </Key>
+    <Property Name="ChapterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoryId" Type="int" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="FirstPageId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Choices">
+    <Key>
+      <PropertyRef Name="ChoiceId" />
+    </Key>
+    <Property Name="ChoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TargetPageId" Type="int" Nullable="false" />
+    <Property Name="SourcePageId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pages">
+    <Key>
+      <PropertyRef Name="PageId" />
+    </Key>
+    <Property Name="PageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChapterId" Type="int" Nullable="false" />
+    <Property Name="DisplayText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PageType" Type="int" Nullable="false" />
+    <Property Name="BackgroundImage" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CharacterImage" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsImportantOption" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stories">
+    <Key>
+      <PropertyRef Name="StoryId" />
+    </Key>
+    <Property Name="StoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoryName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+  </EntityType>
+  <Association Name="FK_ChapterFirstPage">
+    <End Role="Page" Type="StoryBuildsModel.Store.Pages" Multiplicity="1" />
+    <End Role="Chapter" Type="StoryBuildsModel.Store.Chapters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Page">
+        <PropertyRef Name="PageId" />
+      </Principal>
+      <Dependent Role="Chapter">
+        <PropertyRef Name="FirstPageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PageChapter">
+    <End Role="Chapter" Type="StoryBuildsModel.Store.Chapters" Multiplicity="1" />
+    <End Role="Page" Type="StoryBuildsModel.Store.Pages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chapter">
+        <PropertyRef Name="ChapterId" />
+      </Principal>
+      <Dependent Role="Page">
+        <PropertyRef Name="ChapterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoryChapter">
+    <End Role="Story" Type="StoryBuildsModel.Store.Stories" Multiplicity="1" />
+    <End Role="Chapter" Type="StoryBuildsModel.Store.Chapters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Story">
+        <PropertyRef Name="StoryId" />
+      </Principal>
+      <Dependent Role="Chapter">
+        <PropertyRef Name="StoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PageChoice">
+    <End Role="Page" Type="StoryBuildsModel.Store.Pages" Multiplicity="1" />
+    <End Role="Choice" Type="StoryBuildsModel.Store.Choices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Page">
+        <PropertyRef Name="PageId" />
+      </Principal>
+      <Dependent Role="Choice">
+        <PropertyRef Name="TargetPageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PageChoice1">
+    <End Role="Page" Type="StoryBuildsModel.Store.Pages" Multiplicity="1" />
+    <End Role="Choice" Type="StoryBuildsModel.Store.Choices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Page">
+        <PropertyRef Name="PageId" />
+      </Principal>
+      <Dependent Role="Choice">
+        <PropertyRef Name="SourcePageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StoryBuildsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -281,50 +277,49 @@
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="StoryBuildsModelStoreContainer" CdmEntityContainer="StoryBuildsEntities">
-          <EntitySetMapping Name="Chapters">
-            <EntityTypeMapping TypeName="StoryBuildsModel.Chapter">
-              <MappingFragment StoreEntitySet="Chapter">
-                <ScalarProperty Name="FirstPageId" ColumnName="FirstPageId" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="StoryId" ColumnName="StoryId" />
-                <ScalarProperty Name="ChapterId" ColumnName="ChapterId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Choices">
-            <EntityTypeMapping TypeName="StoryBuildsModel.Choice">
-              <MappingFragment StoreEntitySet="Choice">
-                <ScalarProperty Name="SourcePageId" ColumnName="SourcePageId" />
-                <ScalarProperty Name="TargetPageId" ColumnName="TargetPageId" />
-                <ScalarProperty Name="DisplayText" ColumnName="DisplayText" />
-                <ScalarProperty Name="ChoiceId" ColumnName="ChoiceId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pages">
-            <EntityTypeMapping TypeName="StoryBuildsModel.Page">
-              <MappingFragment StoreEntitySet="Page">
-                <ScalarProperty Name="IsImportantOption" ColumnName="IsImportantOption" />
-                <ScalarProperty Name="CharacterImage" ColumnName="CharacterImage" />
-                <ScalarProperty Name="BackgroundImage" ColumnName="BackgroundImage" />
-                <ScalarProperty Name="PageType" ColumnName="PageType" />
-                <ScalarProperty Name="DisplayText" ColumnName="DisplayText" />
-                <ScalarProperty Name="ChapterId" ColumnName="ChapterId" />
-                <ScalarProperty Name="PageId" ColumnName="PageId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Stories">
-            <EntityTypeMapping TypeName="StoryBuildsModel.Story">
-              <MappingFragment StoreEntitySet="Story">
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="StoryName" ColumnName="StoryName" />
-                <ScalarProperty Name="StoryId" ColumnName="StoryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="InsertStory" FunctionName="StoryBuildsModel.Store.InsertStory" />
-        </EntityContainerMapping>
+    <EntitySetMapping Name="Chapters">
+      <EntityTypeMapping TypeName="IsTypeOf(StoryBuildsModel.Chapter)">
+        <MappingFragment StoreEntitySet="Chapters">
+          <ScalarProperty Name="ChapterId" ColumnName="ChapterId" />
+          <ScalarProperty Name="StoryId" ColumnName="StoryId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="FirstPageId" ColumnName="FirstPageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Choices">
+      <EntityTypeMapping TypeName="IsTypeOf(StoryBuildsModel.Choice)">
+        <MappingFragment StoreEntitySet="Choices">
+          <ScalarProperty Name="ChoiceId" ColumnName="ChoiceId" />
+          <ScalarProperty Name="DisplayText" ColumnName="DisplayText" />
+          <ScalarProperty Name="TargetPageId" ColumnName="TargetPageId" />
+          <ScalarProperty Name="SourcePageId" ColumnName="SourcePageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pages">
+      <EntityTypeMapping TypeName="IsTypeOf(StoryBuildsModel.Page)">
+        <MappingFragment StoreEntitySet="Pages">
+          <ScalarProperty Name="PageId" ColumnName="PageId" />
+          <ScalarProperty Name="ChapterId" ColumnName="ChapterId" />
+          <ScalarProperty Name="DisplayText" ColumnName="DisplayText" />
+          <ScalarProperty Name="PageType" ColumnName="PageType" />
+          <ScalarProperty Name="BackgroundImage" ColumnName="BackgroundImage" />
+          <ScalarProperty Name="CharacterImage" ColumnName="CharacterImage" />
+          <ScalarProperty Name="IsImportantOption" ColumnName="IsImportantOption" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stories">
+      <EntityTypeMapping TypeName="IsTypeOf(StoryBuildsModel.Story)">
+        <MappingFragment StoreEntitySet="Stories">
+          <ScalarProperty Name="StoryId" ColumnName="StoryId" />
+          <ScalarProperty Name="StoryName" ColumnName="StoryName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
